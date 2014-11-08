@@ -26,7 +26,7 @@ $(function(){
     });
 
     // on page load, start with a single song
-    iframe.src = "https://soundcloud.com/neon-niteclub/taylor-swift-shake-it-off-neon-niteclub-remix-free-download";
+    iframe.src = "https://soundcloud.com/porter-robinson/divinity-feat-amy-millan";
     widget = SC.Widget(iframe);
 
     // keyboard shortcut bindings
