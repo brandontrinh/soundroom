@@ -1,0 +1,107 @@
+@import "../themes/kickstrap.css"
+
+@import "_auth-buttons"
+
+$brown = rgba(242, 239, 235, 0.9)
+
+$footerHeight = 50px
+body
+	padding-top: 70px // For fixed navbar
+	.ks-beforeload
+		display: block
+		&_visibility
+			visibility: visible
+	.ks-afterload
+		display: none
+		&_visibility
+			visibility: hidden
+	&.loaded
+		.ks-beforeload
+			display: none
+			&_visibility
+				visibility: hidden
+		.ks-afterload
+			display: block
+			&_visibility
+				visibility: visible
+
+// A little UX sugar
+
+.pointer
+	cursor: pointer
+
+// Sticky Footer
+
+html
+, body
+	height: 100%
+
+#sf-wrap
+	min-height: 100%
+	height: auto !important
+	height: 100%
+	margin 0 auto (-1 * $footerHeight)
+	padding: 0 0 $footerHeight
+
+#sf-footer
+	height: $footerHeight
+	margin-bottom: 0
+
+#sf-push
+	padding-top: $footerHeight
+	display: block
+
+// NG-Progress
+
+#ngProgress
+	margin: 0
+	padding: 0
+	z-index: 99998
+	background-color: green
+	color: green
+	box-shadow: 0 0 10px 0
+	height: 2px
+	opacity: 0
+	transition(all 0.5s ease-in-out)
+
+#ngProgress-container
+	position: fixed
+	margin: 0
+	padding: 0
+	top: 0
+	left: 0
+	right: 0
+	z-index: 99999
+
+// Readability
+
+$readableSize = 18px
+readableParagraph()
+	font-size: $readableSize
+	line-height: 29px
+	margin-bottom: 20px
+	color: #3D444B
+readableLead()
+	font-size: ( $readableSize + 7px )
+	line-height: 34px
+readableHeading()
+	// margin-bottom: 15px
+
+p, label, tr, td, div, ol li, ul li
+	&.readable
+		readableParagraph()
+
+h1, h2, h3, h4, h5, h6
+	&.readable
+		readableHeading()
+
+.lead.readable
+	readableLead()
+
+.readable
+	p, label, tr, td, div, ol li, ul li
+		readableParagraph()
+	.lead
+		readableLead()
+	h1, h2, h3, h4, h5, h6
+		readableHeading()

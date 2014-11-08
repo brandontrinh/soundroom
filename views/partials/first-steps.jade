@@ -1,0 +1,90 @@
+.page-header
+	h1 First Steps
+.row
+	.col-sm-8
+		p Kickstrap is a boilerplate of Bootstrap, JSPM, Angular.js and Roots that can copy itself into any directory you choose.
+		p If you're looking at this page from your local installation, you've successfully got Kickstrap up and running with the example pages. You should skip to Editing content.
+			|  Otherwise, continue reading.
+	.col-sm-4
+		.alert.alert-info
+			h4 
+				span.glyphicon.glyphicon-question-sign
+				|  Need to ask a question?
+			p
+				a(href="https://github.com/ajkochanowicz/Kickstrap/issues?state=open") Create an issue on the 
+				| Kickstrap GitHub page
+h2 1. Install Kickstrap
+
+iframe(width="480" height="360" src="//www.youtube.com/embed/paV8E6D6Bu4" frameborder="0" allowfullscreen)
+
+p To install Kickstrap, you'll 
+	a(href="https://npmjs.org/") need Node Package Manager. 
+	| . If you already have this installed, run
+p
+	pre sudo npm update -g
+p Then...
+p
+	pre sudo npm install -g kickstrap
+
+h2 2. Create a new Kickstrap site
+p Navigate to the directory where you'd like to create a new Kickstrap site and run
+	pre kickstrap new mysite
+p This will create a new directory called "mysite" with the Kickstrap boilerplate. If instead you want to make the site in current directory, replace "mysite" with "."
+	pre kickstrap new .
+p When the files have finished transferring, Roots will automatically start a local server in that directory and reload when any changes are detected (Live Reload).
+p To stop this process, press ctrl + c.  To run the watcher again run either
+	pre kickstrap watch
+p or
+	pre roots watch
+
+p If something isn't right, file or search your issue at 
+	a(href="https://github.com/ajkochanowicz/Kickstrap") the Kickstrap GitHub page.
+	br
+	| If the issue is related to Roots compilation make sure you have 
+	a(href="https://github.com/jenius/roots#installation") satisfied the requirements here.
+p 
+	a(href="#/roots") Continue reading: Compiling in Roots
+	|  to learn how best to compile, watch, and prepare for a production website.
+iframe(width="480" height="360" src="//www.youtube.com/embed/utsuXNf91pg" frameborder="0" allowfullscreen)
+
+
+h2 3. Create your own Firebase account
+p In its current form, your Kickstrap example pages are hooked up to a read-only Firebase. This will prevent you from doing anything truly useful in a production environment since users can't manipulate data.
+p Fortunately, Firebase offers free accounts under a certain usage tier. You can sign up for a Firebase account here: 
+	a(href="https://www.firebase.com/signup/") firebase.com/signup
+p Once you have your first Firebase, just open js/_settings.coffee...
+	pre # Firebase URI
+		| # firebaseName: 'kickstrap-demo'
+p Uncomment 
+	code firebaseName
+	| , and replace it with your own url. This will be the name before ".firebaseio.com" For example, https://mysite.firebaseio.com would be
+	pre # Firebase URI
+		| firebaseName: 'mysite'
+p Now you have your own Firebase, but you'll notice all the data is empty. If you want to reinstall the sample data, I've included a .json file you can export into firebase. Look for 
+	strong kickstrap-demo-data.json 
+	| in the root of your project. Import this into Firebase by visiting https://[yoursitename].firebaseio.com, clicking on the data tab, then clicking "Import JSON".
+p Please note, this will delete any data you have there.
+iframe(width="480" height="360" src="//www.youtube.com/embed/-4UGsKGKvKk" frameborder="0" allowfullscreen)
+
+h2 4. Editing content
+p tl;dr: The easiest way to make a page is to create a new .jade file in /views
+p Also see:
+ul
+	li 
+		a(href="#/pages") Creating pages
+p In Roots, your pages are generated with the files in views/. 
+p layout.jade and blank.jade are base files. By default, files will extend (add themselves to) blank.jade. This is the case for partials and layout.jade, each of which we'll explain next.
+p The pages in the example app extend layout.jade, which provides the repetitive header and footer content you'll use application-wide. In the case of this page, partials are used inside index.jade via angular. This allows a single page to refresh with content for only a small part of the page. By loading only the partial, all the head content and JavaScript dependencies do not need to be set up again.
+p Kickstrap uses both Angular partials and Jade partials. Angular partials load in real time, on request in the browser. They can be found in views/partials/.
+p Jade partials are compiled once in the project and added to the final .html files. These are found in views/ and should start with an underscore. (e.g. "_footer.jade")
+
+h3 Change theme and basic settings
+p Import one of the included Bootstrap themes into main.css. These are found in /themes
+p To do this, open main.css and change the theme imported at the top
+p
+	pre @import "../theme/[yourthemenamehere].css"
+
+h3 Editing the header
+p The header that provides the navigation bar is a Jade partial. This is automatically added to any view with the code:
+	pre include _header
+	| _header.jade can be found in views/.

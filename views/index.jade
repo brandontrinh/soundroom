@@ -1,0 +1,152 @@
+extends layout
+
+block variables
+	- var active = 'home'
+
+block content
+	include _header
+
+	.container
+
+		section.row(ng-controller='HomeCtrl', ng-init="setSelectedSection(sections[0])")
+			link(rel="stylesheet", ng-href="{{themePreviewUrl}}")
+			.col-lg-8.col-lg-offset-2
+
+				video(src="//getkickstrap.com/2.0-static/vid/kickstrap-demo.mp4" poster="img/poster.png" style="width: 100%;min-height:320px;max-height:60%" controls)
+				br
+
+				.row.readable
+					br
+					.col-xs-12
+						.page-header
+							h1 Integrated with Angular.js
+					.col-sm-8
+						p.lead Google's powerful front-end MVC turns your website into an webapp.
+						p Angular is baked together with Bootstrap and JSPM.io to create simple yet powerful UI-binding.
+					.col-sm-4
+						img.img-responsive(src="/img/angular.png")
+
+				.row.readable
+					br
+					.col-xs-12
+						.page-header
+							h1 No Backend Needed
+					.col-sm-8
+						p.lead Kickstrap uses Firebase, a Backend as a Service (BaaS)
+						p Kickstrap seamlessly combines Bootstrap with top-tier web technologies. It's so advanced, it can run an authenticated, database-driven web app 
+							strong without a native backend.
+					.col-sm-4
+						img.img-responsive.center-block(src="/img/firebase.png")
+						
+				.row.readable
+					br
+					.col-sm-4
+						p.lead Try Firebase
+						p Each drawing syncs and is stored at a common real-time data point. Try it.
+					.col-sm-4
+						p
+							iframe.center-block(style="width:205px;height:190px;border:0px solid" src="http://firebase.com/how-it-works-drawing-demo.html" scrolling="no")
+					.col-sm-4
+						p
+							iframe.center-block(style="width:205px;height:190px;border:0px solid" src="http://firebase.com/how-it-works-drawing-demo.html" scrolling="no")
+
+				.row
+					br
+					.col-xs-12
+						.page-header
+							h1 JavaScript Package Mangager (JSPM)
+							p.lead Advanced package management for the browser
+				.row.readable
+					.col-sm-8
+						p Via JSPM, Kickstrap can run bundled resources (CSS, JS, text, images...) as dependency-managed packages. Even load directly from GitHub, CDNJS, or NPM.
+
+					.col-sm-4
+						img.img-responsive(src="/img/jspm.png")
+				.row.readable
+					br
+					.col-xs-12
+						.page-header
+							h1 The Most Trusted Fork of Bootstrap
+					.col-sm-6
+						p.lead Modern, Scalable, Production Ready.
+						p In this second version, we've reworked Kickstrap from the ground up, empowering it with the best in pre-processing technologies (Jade, CoffeeScript, Stylus), package-dependency management (JSPM.io), and a fast, front-end MVC (Angular.js).
+					.col-sm-6
+						.col-sm-6
+							img.img-responsive(src="./img/vegankit.png")
+						.col-sm-6
+							img.img-responsive(src="./img/abergs.png")
+						.col-sm-6
+							img.img-responsive(src="./img/ipreo.png")
+						.col-sm-6
+							img.img-responsive(src="./img/peugeot.png")
+						.col-sm-6
+							img.img-responsive(src="./img/skuvault.png")
+						.col-sm-6
+							img.img-responsive(src="./img/fwdslash.png")
+						br
+						p.pull-right
+							small Trusted by these brands
+
+				.row
+					br
+					.col-xs-12
+						.page-header
+							h1 Included Themes
+							p.lead Activate themes on-the-fly
+							p Click on a theme to preview.
+				.row.ks-afterload
+					.col-sm-3(sly-repeat="theme in themes")
+						h4.pointer {{theme.title}}
+						img.thumbnail.img-responsive.pointer(ng-src="./themes/{{theme.name}}.png", ng-click="setTheme(theme.name)")
+				.row
+					.col-xs-12
+						p
+							em * Courtesy of Thomas Park and 
+								a(href="http://bootswatch.com/") Bootswatch.com
+
+				.row
+					br
+					.col-xs-12
+						.page-header
+							h1 Your Website has an App Store
+					.col-md-6#pong-desc
+						p.lead.readable Keeping track of and staying up to date on your static resources (JS, CSS, fonts, images...) and their dependencies is painful.
+						p.readable Kickstrap's partnership with JSPM.io provides a strong front-end package dependency manager built on Require.js.
+						p.readable Kickstrap apps are unit JSPM bundles of static resources that can be run at any time in the web app's lifetime. 
+						p.readable JSPM also allows for loading resources from npm, CDNJS, and GitHub via its CDN registry.
+					.col-md-6
+						#pong
+							.well(style="height: 300px") 
+								p
+									em Waiting for JSPM package
+						p Try it here:
+						p
+							pre jspm.import('ks:pong');
+						p
+							a.btn.btn-primary(onclick="jspm.import('ks:pong')") Run Code
+
+				.row
+					br
+					.col-xs-12
+						.page-header
+							h1 Support Kickstrap
+					.col-md-2
+						p
+							script(data-gittip-username="yourwebsitesUX" src="//gttp.co/v1.js")
+					.col-md-10.readable
+						p Kickstrap is a project of passion that takes a lot of time to develop, maintain, and offer support for.
+						p You can support this effort by pledging a small donation to via GitTip.
+
+		section.row
+			br
+			.col-lg-8.col-lg-offset-2
+				.col-sm-3.col-xs-6
+					img.img-responsive(src="./img/mashable.png")
+				.col-sm-3.col-xs-6
+					img.img-responsive(src="./img/hn.png")
+				.col-sm-3.col-xs-6
+					img.img-responsive(src="./img/dzone.png")
+				.col-sm-3.col-xs-6
+					img.img-responsive(src="./img/t3n.png")
+				.col-xs-12
+					p.text-center.pull-right As seen on these news websites
