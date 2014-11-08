@@ -60,7 +60,7 @@ $(function(){
 
 
     // main function that handles searching
-    $('#searchterm').keypress(function(event) {
+    $('#searchterm').keyup(function(event) {
 
         event.preventDefault();
 
