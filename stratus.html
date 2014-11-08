@@ -5,18 +5,23 @@
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
    <script type="text/javascript" src="js/stratus.js"></script>
    <script type="text/javascript">
+
+     var songLinks = ['https://soundcloud.com/la-femme-triste/so-it-goes',
+                      'https://soundcloud.com/beazytymes/the-xx-hot-like-fire'];
+
      $(document).ready(function(){
        $.stratus({
          align: 'top',
+         animate: 'slide',
          position: 'fixed',
-         links: 'http://soundcloud.com/mnek-1/wrote-a-song-about-you-shift-k3y-remix'
+         links: songLinks
        });
      });
    </script>
 </head>
 
 <body>
-   <a href="http://soundcloud.com/foofighters/rope" class="stratus"></a> 
+   <!-- <a href="https://soundcloud.com/la-femme-triste/so-it-goes" class="stratus"></a>  -->
 </body>  
 
 </html>
