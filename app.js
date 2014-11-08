@@ -26,7 +26,7 @@ $(function(){
     });
 
     // on page load, start with a single song
-    iframe.src = "https://soundcloud.com/porter-robinson/divinity-feat-amy-millan";
+    iframe.src = "http://w.soundcloud.com/player/?url=https://soundcloud.com/porter-robinson/divinity-feat-amy-millan";
     widget = SC.Widget(iframe);
 
     // keyboard shortcut bindings
