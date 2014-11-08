@@ -8,7 +8,6 @@ $(function(){
     // store all tracks after a search query
     var all_tracks = [];
 
-
     var recentlyAdded = [];
 
     // timer to search only after a while
