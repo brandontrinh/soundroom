@@ -96,10 +96,19 @@ $(function(){
             } else {
                 all_tracks = tracks;
                 var track = all_tracks.splice(0, 1)[0];
-                recentlyAdded.push(track.title);
-                $("#recentList").append("<p>"+track.title+"</p>");
+                // recentlyAdded.push(track.title);
+                // $("#recentList").append("<p>"+track.title+"</p>");
+                for(var key in all_tracks)
+                {
+                    if(JSONObject.hasOwnProperty(key)) {
+                        $("#songList").append("<p>"+all_tracks[key]["title"]+</p>");
+                    }
+                   
+                }
+               
 
-                playTrack(track);
+
+                //playTrack(track);
             }
         });
     }
