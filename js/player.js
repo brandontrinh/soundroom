@@ -7,7 +7,7 @@ SC.initialize({
 $.getJSON('http://soundcloud.com/oembed?callback=?',
     {
          format: 'js', 
-         auto_play: true,
+         auto_play: false,
          url: 'https://soundcloud.com/lovekyle/fruit-snacks-cups-of-patron', iframe: true},
          function(data) {
              // Put html content returned into 'player' div
