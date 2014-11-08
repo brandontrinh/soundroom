@@ -60,7 +60,7 @@ $(function(){
 
 
     // main function that handles searching
-    $('#searchterm').keyup(function(event) {
+    $('#searchterm').keypress(function(event) {
 
         event.preventDefault();
 
@@ -81,9 +81,11 @@ $(function(){
 
         clearTimeout(timer);
 
-        timer = setTimeout(function() {
+       if(event.which == 13)
+       {
             instaSearch(q);
-        }, 200); // wait for 200ms after search query
+       }
+        // wait for 200ms after search query
 
     });
 
