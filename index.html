@@ -17,6 +17,17 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+
+							 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    							<script src="http://connect.soundcloud.com/sdk.js"></script>
+    							<script src="http://w.soundcloud.com/player/api.js"></script>
+    							<script type="text/javascript" src="app.js"></script>
+    							<link rel="stylesheet" href="style.css">
+
+
+
+
+
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -103,7 +114,16 @@
 						<div class="container">
 
 							<header>
-								<h2 class="alt">Make search here timmy</h2>
+								<h2 class="alt">Search</h2>
+								      <div id="search">
+        <input id="searchterm" type="text" required autofocus cols="50" placeholder="Search on SoundCloud" />
+      </div>
+
+
+            <div id="app">      
+          <div id="error"></div>
+          <iframe id="widget" width="100%"></iframe>
+      </div>
 							</header>
 							
 							<footer>
@@ -156,6 +176,9 @@
 					</ul>
 				
 			</div>
+
+
+
 
 	</body>
 </html>
