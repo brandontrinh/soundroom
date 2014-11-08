@@ -42,6 +42,13 @@
 		}
 	});
 
+	$(document).ready(function(){
+		$("start").click(function(){
+			$("top").hide(500);
+			$("search").show(500);
+		});
+	});
+
 	$(function() {
 
 		var	$window = $(window),
