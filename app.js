@@ -3,7 +3,7 @@ $(function(){
     $(document).height($(window).height());
 
     // SC api key
-    var client_id = '0448ca85ad04b55fdabbfbac1d4f7217';
+    var client_id = '103e05240820b5d0d7d5220ba773612c';
 
     // store all tracks after a search query
     var all_tracks = [];
@@ -11,9 +11,47 @@ $(function(){
     // timer to search only after a while
     var timer;
 
+    // iframe that stores the SC player
+    var iframe = $("#widget")[0];
+
+    // the SC Widget object
+    var widget;
+
     // initialize the soundcloud app
     SC.initialize({
         client_id: client_id
+    });
+
+    // on page load, start with a single song
+    iframe.src = "http://w.soundcloud.com/player/?url=https://soundcloud.com/withlovexavier/drake-medley";
+    widget = SC.Widget(iframe);
+
+    // keyboard shortcut bindings
+    $(document).keydown(function(e) {
+        // this won't work if search field is focussed
+        if (!$("#searchterm").is(':focus')) {
+            if (e.keyCode == 39) {
+                // right arrow key pressed, play next
+                next();
+            } else if (e.keyCode == 32) {
+                // space key to toggle playback
+                toggle();
+            } else if (e.shiftKey && e.keyCode == 38) {
+                // shift up
+                volumeUp();
+            } else if (e.shiftKey && e.keyCode == 40) {
+                // shift down
+                volumeDown();
+            }
+        }
+    });
+
+    // bind events to the widget
+    widget.bind(SC.Widget.Events.READY, function() {
+        // when the track finishes, play the next one
+        widget.bind(SC.Widget.Events.FINISH, function(e) {
+            next();
+        });
     });
 
     // main function that handles searching
@@ -22,8 +60,7 @@ $(function(){
         event.preventDefault();
 
         // google analytics
-        ga('send', 'event', 'input', 'search');
-
+      
         var q = $("#searchterm").val();
 
         // validate query
@@ -61,7 +98,7 @@ $(function(){
 
     // takes a track from SoundCloud and plays it.
     function playTrack(track) {
-        ga('send', 'event', 'play', 'songPla');
+
         cleanUpSpace();
         // console.log(track.uri);
         // update the iframe source
@@ -78,5 +115,40 @@ $(function(){
 
         // console.log("loaded " + track.title);
     }
-});
 
+    // toggle play and paused state of audio player
+    var toggle = function() {
+        widget.toggle();
+    }
+
+    // play the next song in queue and remove the track that
+    // is to be played.
+    var next = function() {
+        if (all_tracks.length != 0) {
+            var track = all_tracks.splice(0, 1)[0];
+            playTrack(track);
+        } else {
+            cleanUpSpace();
+            $('#error').append('No more songs. Try searching.');
+            $('#searchterm').focus();
+        }
+    }
+
+    var volumeUp = function() {
+        widget.getVolume(function(volume) {
+            widget.setVolume(Math.min(100, volume + 5));
+        });
+    }
+
+    var volumeDown = function() {
+        widget.getVolume(function(volume) {
+            widget.setVolume(Math.max(0, volume - 5));
+        });
+    }
+
+    var cleanUpSpace = function() {
+        $('#widget').empty();
+        $('#error').empty();
+    }
+
+});

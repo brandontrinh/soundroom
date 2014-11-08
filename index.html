@@ -12,8 +12,11 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
       <script src="http://connect.soundcloud.com/sdk.js"></script>
+      <script src="http://w.soundcloud.com/player/api.js"></script>
 		<script src="js/player.js"></script>
+		<script src="app.js"></script>
 
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
@@ -100,7 +103,9 @@
       </div>
 
 
-            <div id="app">      
+            <div id="app">  
+            <div id="error"></div>
+
           <div id="error"></div>
           <iframe id="widget" width="100%"></iframe>
       </div>
