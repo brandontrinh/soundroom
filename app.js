@@ -81,11 +81,12 @@ $(function(){
 
         clearTimeout(timer);
 
-       if(event.which == 13)
-       {
-            instaSearch(q);
-       }
-        // wait for 200ms after search query
+        timer = setTimeout(function() {
+                if(event.which == 13)
+            {
+                instaSearch(q);
+            }
+        }, 200); // wait for 200ms after search query
 
     });
 
