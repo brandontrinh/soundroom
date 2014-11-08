@@ -1,1 +1,0 @@
-../../../assets/apps/pong/game.txt

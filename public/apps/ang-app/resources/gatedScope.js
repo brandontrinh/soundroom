@@ -1,1 +1,0 @@
-../../../../assets/apps/ang-app/resources/gatedScope.js
