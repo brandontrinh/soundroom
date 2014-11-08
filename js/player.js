@@ -6,7 +6,7 @@ SC.initialize({
 
 $.getJSON('http://soundcloud.com/oembed?callback=?',
    {format: 'js', 
-    auto_play: true,
+    auto_play: false,
     url: 'https://soundcloud.com/lovekyle/sets/beautiful-loser',
     iframe: true}, 
     function(data) {

@@ -26,7 +26,7 @@ $(function(){
     });
 
     // on page load, start with a single song
-    iframe.src = "http://w.soundcloud.com/player/?url=https://soundcloud.com/withlovexavier/drake-medley";
+    iframe.src = "https://soundcloud.com/neon-niteclub/taylor-swift-shake-it-off-neon-niteclub-remix-free-download";
     widget = SC.Widget(iframe);
 
     // keyboard shortcut bindings
