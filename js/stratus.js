@@ -8,7 +8,7 @@
   $.stratus = function(settings) {
     var root_url, src;
     root_url = settings.env === 'development' ? 'http://example.com:3000' : 'http://stratus.sc';
-    $('head').append("<link rel='stylesheet' href='" + root_url + "/stratus.css' type='text/css'/>");
+    $('head').append("<link rel='stylesheet' href='css/stratus.css' type='text/css'/>");
     if (settings.align === 'top') {
       $('head').append("<style>#stratus{ top: 0; }</style>");
     }
@@ -19,7 +19,7 @@
       $('head').append("<style>#stratus{ " + settings.align + ": " + settings.offset + "px !important; }</style>");
     }
     $('body').append("<div id='stratus'><iframe allowtransparency='true' frameborder='0' scrolling='0'></div>");
-    src = root_url + '/player?' + $.param(settings, true) + '&link=' + encodeURIComponent(document.location.href);
+    src = root_url + '/player?' + $.param(settings, true) + '&link=' + encodeURIComponent(document.location.href) + "&popup=true";
     $('#stratus iframe').attr({
       src: src
     });
