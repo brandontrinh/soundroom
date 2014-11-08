@@ -104,7 +104,20 @@ $(function(){
                 for(var key in all_tracks)
                 {
                     if(all_tracks.hasOwnProperty(key)) {
-                        $("#songList").append("<p>"+all_tracks[key]["title"]+"</p>");
+                        //$("#songList").append("<p>"+all_tracks[key]["title"]+"</p>");
+                        var myDDL = document.getElementById("dropDown");
+                        for(i = 0; i < all_tracks.title; i++)
+                        {
+                            var option = document.createElement("option");
+                            option.text = all_tracks.title;
+                            //optin.value = all_tracks.uri;
+                            try {
+                                myDDL.options.add(option);
+                            }
+                            catch (e) {
+                                alert(e);
+                            }
+                        }
                     }
                    
                 }
