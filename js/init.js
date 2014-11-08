@@ -43,13 +43,19 @@
 	});
 
 	$(document).ready(function(){
+		Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
+		var TestObject = Parse.Object.extend("TestObject");
+		var testObject = new TestObject();
+		testObject.save({foo: "bar"}).then(function(object) {
+		  alert("yay! it worked");
+		});
 		$("#start").click(function(){
 			$("#top").hide(500);
 			$("#search").show(500);
 		});
 		$("#addbutton").click(function(){
-			var userInput = document.getElementById("searchterm").value;
-    		document.getElementById("demo").innerHTML = userInput;
+			var trackName = document.getElementById("searchterm").value;
+    		document.getElementById("demo").innerHTML = trackName;
 		});
 	});
 
