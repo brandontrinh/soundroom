@@ -101,7 +101,7 @@ $(function(){
                 for(var key in all_tracks)
                 {
                     if(JSONObject.hasOwnProperty(key)) {
-                        $("#songList").append("<p>"+all_tracks[key]["title"]+</p>");
+                        $("#songList").append("<p>"+all_tracks[key]["title"]+"</p>");
                     }
                    
                 }
