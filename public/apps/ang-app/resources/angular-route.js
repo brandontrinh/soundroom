@@ -1,0 +1,1 @@
+../../../../assets/apps/ang-app/resources/angular-route.js

@@ -1,0 +1,25 @@
+
+<div class="page-header">
+  <h1>API</h1>
+</div><h2 id="-ks-afterload">.ks-afterload</h2>
+<p>Display only when JSPM has finished loading.</p>
+
+<p>This is particularly useful when you need to hide the <span ng-non-bindable="ng-non-bindable">{{}}</span> notation before the page has finished loading.</p><h2 id="-ks-afterload_visibility">.ks-afterload_visibility</h2>
+<p>Similar to the above, this achieves the same thing but applies a &quot;visibility:none&quot; to the element instead of removing it from being rendered completely.</p>
+<h2 id="-ks-beforeload">.ks-beforeload</h2>
+<p>Display only before JSPM has finished loading.
+This is particularly useful when you need a placeholder for content that is about to load.</p>
+<h2 id="-ks-beforeload_visibility">.ks-beforeload_visibility</h2>
+<p>Similar to the above, this achieves the same thing but applies a &quot;visibility:visible&quot; to the element.</p>
+<h2 id="k-">k$</h2>
+<p>This is a global element used for kickstrap functions. Any JavaScript scoped to this variable is exposed to the global namespace.</p>
+<h2 id="k-ready-">k$.ready()</h2>
+<p>Function to execute code once JSPM has finished loading resources.</p>
+
+<p>For example,
+  <pre>k$.ready ->
+  alert('hello world')</pre>
+</p><h2 id="sly-repeat">sly-repeat</h2>
+<p>This is a last resort alternative to Angular&#39;s ng-repeat with several optimizations. Ng-repeat turns out to be highly problematic on mobile browsers depending on how it&#39;s used. 
+sly-repeat comes from a popular <a href="http://blog.scalyr.com/2013/10/31/angularjs-1200ms-to-35ms/">Scalyr.com blog post</a> on this very issue.
+Use this as you would ng-repeat, but at your own risk. It will not work in every scenario ng-repeat would. Hopefully future versions of Angular will address this.</p>

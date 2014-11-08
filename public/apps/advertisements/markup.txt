@@ -1,0 +1,1 @@
+../../../assets/apps/advertisements/markup.txt

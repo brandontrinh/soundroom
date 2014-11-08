@@ -1,0 +1,1 @@
+../../../../assets/apps/kickstrap-logo/specimen_files/easytabs.js

@@ -1,0 +1,17 @@
+
+<div class="page-header">
+  <h1>Growls</h1>
+</div>
+<p>Growls are non-intrusive messages with a lot of cusomizability. Use a growl under the <code>k$.ready</code> function to insure they fire when jQuery and TinyGrowl are ready.</p>
+<p>
+  <pre>:coffeescript
+  k$.ready ->  
+    $.growl
+      title: 'Welcome to my page'
+      text: 'Check out the documentation to get started.'
+      type: 'success'
+      delay: 3000</pre>
+</p>
+<p> <code>k$.ready</code> is a JavaScript function that will execute anything below it once JSPM has finished running its components. As such, any code that is dependent on Kickstrap apps or angular will load once everything is ready and available. This can be included in multiple places on one page.</p>
+<p>Growls are a jQuery extension available as an app called Tiny Growl. This app must be included in <code>k$.apps</code> to run correctly.  To remove the growl completely, simply delete <code>$.growl</code> and the indented code below it.</p>
+<p>For more information on using growls, visit the <a href="https://github.com/ajkochanowicz/tinygrowl">GitHub documentation.</a></p>

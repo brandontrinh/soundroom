@@ -1,0 +1,52 @@
+
+<div class="page-header">
+  <h1>Creating Partials</h1>
+</div>
+<p>tl;dr: Kickstrap uses two kinds of partials, Roots and Angular. Roots partials compile into the html files. Angular partials can be loaded into parts of the page in real time.</p>
+<h2>Roots partials </h2>
+<p>Roots partials are chunks of files that can be combined when Roots compiled. This is great for keeping parts of your page organized. Out-of-the-box, Kickstrap uses partials for JavaScript files like _badge.coffee, _settings.coffee, and _extend.coffee. These all combine into kickstrap.coffee to make one kickstrap.js file. Kickstrap also uses the _header.jade partial for most of the pages to generate the navbar. _pagination.jade is used twice in just one page. This allows us to show pagination twice on one page without having to duplicate any code.</p>
+<h3>Creating a Roots partial</h3>
+<p>To create a roots partial, simply create a .jade file prefixed with a _. For example,</p>
+<p>
+  <pre>_avatar.jade</pre>
+</p>
+<p>Now, just use <code>include</code> to load it into one of your jade files. Remember to drop the file extension.</p>
+<p>
+  <pre>include _avatar</pre>
+</p>
+<p>As it is written above, this assumes the partial is in the same directory as the file that calls <code>include</code>. Otherwise, refer to its relative directory. If _avatar.jade is in views/myPartials and our profile page is in views/, we'd write this in profile.jade:</p>
+<p>
+  <pre>include myPartials/_avatar</pre>
+</p>
+<h2>Angular partials</h2>
+<p>Angular partials are very different from Roots partials in that they are loaded into the current view in real time. You've seen this happen when you clicked the menu item to see this very page. The words you are reading right now are stored in a file called partials.jade in the views/partials directory. When you click on a menu item on the index page, instead of completely reloading the page, only the little bit of text content is updated.</p>
+<h3>Creating an Angular partial</h3>
+<p>Angular partials are also easy to create, but the full functionality and options for using them is complex. See <a href="http://docs.angularjs.org/api/ng.directive:ngInclude">ng-include </a>to use non-changeable partials. and <a href="http://docs.angularjs.org/api/ngRoute.directive:ngView">ng-view </a>for documentation on what we'll discuss below.</p>
+<p>Using the structure existing in a fresh download of Kickstrap, here is the easiest way to create partials. First, define where the partial should load into by adding the attribute <code>ng-view</code> to an HTML element.</p>
+<p> 
+  <pre>div(ng-view)</pre>
+</p>
+<p>See an example of this in views/index.jade.</p>
+<p>Now create your partial file in views/partials. Feel free to organize it however you wish. You may intend on having a lot of partials and will need to create directories to group them. In this example, we'll add an <code>ng-view</code> to products.jade. We'll put it right under the title "On sale now" so we have it right at the top of the page.</p>
+<p>
+  <pre>h1 On Sale Now
+div(ng-view)
+p.lead Get them before they're gone</pre>
+</p>
+<p>We need to do at least two things before we're ready to test our partial:</p>
+<ol>
+  <li>Create the partial</li>
+  <li>List the partial as a page in _settings.coffee</li>
+</ol>
+<p>In the case of the docs, adding a new page requires a third step of adding it to <code>$scope.pages</code> which will tell the template to create a link fo the page in the sidebar.</p>
+<h4>Create the partial</h4>
+<p>We'll create a partial called test.jade in views/partials/test.jade and enter the following:</p>
+<p>
+  <pre>h3 hello world</pre>
+</p>
+<h4>List the partial</h4>
+<p>Angular needs to know that when we go to a page ending with "#test", it should load our partial into ng-view. Kickstrap makes this easy. Just open up _settings.coffee and find the list of <code>pages</code> under <code>angular</code>. Add 'test' there.</p>
+<pre>pages:
+  ...
+  'test'</pre>
+<p>Now, just navigate to /products.html#/test. You should see "hello world" under "On Sale Now".</p>

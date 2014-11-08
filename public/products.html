@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="The Elegant Frontend Framework">
+    <meta name="author" content="Adam Kochanowicz">
+    <script src="https://jspm.io/system@0.4.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <title>
+       
+      Kickstrap - Products
+    </title>
+  </head>
+  <body>
+    <div id="sf-wrap">
+      <div ng-controller="LoginCtrl">
+        <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse" class="navbar-toggle"><span class="sr-only">Toggle Navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand kickstrap-logo">Kickstrap</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-ex1-collapse">
+              <!-- Stripped-down header. Help users to focus on their purchase.-->
+              <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/docs.html#first-steps">Docs</a></li>
+                <li class="active"><a href="/products.html">Products</a></li>
+                <li><a href="/newpage.html#disqus_thread">New Page</a></li>
+              </ul>
+              <form class="navbar-form navbar-right">
+                <div class="form-group"><a id="install" href="docs.html#first-steps" class="btn btn-primary">Install </a></div>
+              </form>
+              <ul class="navbar-right nav navbar-nav">
+                <li><a href="/cart.html"> <span class="glyphicon glyphicon-shopping-cart"> </span><span>&nbsp;</span><span class="badge">3</span></a></li>
+                <li><a href="/messages.html"> <span class="glyphicon glyphicon-envelope"> </span><span>&nbsp;</span><span class="badge">10</span></a></li>
+                <li><a href="#" data-target="#login" data-toggle="modal"> <span ng-hide="auth.user">Login </span><span ng-show="auth.user" class="ks-afterload"><img ng-src="{{auth.user.thumbnailImg}}" style="width: 20px;height: 20px;"></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div id="login" tabindex="-1" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" data-dismiss="modal" class="close">&times;</button>
+                <h4 class="modal-title">Login</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div ng-show="auth.user" class="col-sm-6">
+                    <p><img ng-src="{{auth.user.thumbnailImg}}"></p>
+                    <p class="lead">Logged in as {{auth.user.name}}</p>
+                    <p><a href="#" ng-click="auth.$logout()" class="btn btn-default">Logout</a></p>
+                  </div>
+                  <div ng-hide="auth.user" class="col-sm-6">
+                    <!-- Thanks http://nicolasgallagher.com/lab/css3-social-signin-buttons/-->
+                    <p class="lead">Login using...</p>
+                    <p><a href="#" ng-click="auth.$login('facebook')" class="btn-auth btn-facebook">Facebook</a></p>
+                    <p><a href="#" ng-click="auth.$login('twitter')" class="btn-auth btn-twitter">Twitter</a></p>
+                    <p><a href="#" ng-click="auth.$login('github')" class="btn-auth btn-github">GitHub</a></p>
+                    <p>Support Kickstrap Development</p>
+                    <p>
+                      <script data-gittip-username="yourwebsitesUX" data-gittip-widget="button" src="//gttp.co/v1.js"></script>
+                    </p>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="alert alert-info">
+                      <h4>Example</h4>
+                      <p>This screen simply demonstrates Firebase's native social login authorization.</p>
+                    </div>
+                    <p>When using your own Firebase account, don't forget to <a href="/docs.html#social-login">setup your app keys and secrets </a>for each social network</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-controller="ProductsCtrl" class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1>On Sale Now</h1>
+            <p class="lead">Get them before they're gone</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <article class="panel panel-default">
+              <div class="panel-heading"> 
+                <input type="text" ng-model="productInput" placeholder="Search products" class="form-control">
+              </div>
+              <div class="list-group ks-beforeload">
+                <p class="list-group-item">Loading...</p>
+              </div>
+              <div class="list-group ks-afterload"><a ng-href="{{&quot;#&quot;}}{{slug(product.name)}}" sly-repeat="product in products | orderByPriority | filter:productInput" ng-click="setSelectedProduct(product)" class="list-group-item">{{product.name}}</a></div>
+            </article>
+          </div>
+          <div class="col-sm-9 ks-afterload">
+            <div id="featured" data-ride="carousel" class="carousel slide">
+              <ol class="carousel-indicators">
+                <li data-target="#featured" data-slide-to="0" class="active"></li>
+                <li data-target="#featured" data-slide-to="{{$index+1}}" sly-repeat="product in products | orderByPriority | filter:{featured: true}"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div style="max-height: 450px" class="item active"><img src="http://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/c/cc/Le_garcon_et_la_ville.JPG&amp;w=1000&amp;t=fitup">
+                  <div class="carousel-caption">
+                    <h3>Check out our summer deals</h3>
+                  </div>
+                </div>
+                <div sly-repeat="product in products | orderByPriority | filter:{featured: true}" style="max-height: 450px" class="item"><img ng-src="http://images.weserv.nl/?url=s3.amazonaws.com/getkickstrap.com/2.0-static/img/{{product.img}}&amp;w=1000&amp;t=fitup">
+                  <div class="carousel-caption">
+                    <h3>
+                       
+                      {{product.name}}
+                    </h3>
+                    <p>{{product.desc}}</p>
+                    <p> <a href="cart.html" class="btn btn-default"> <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a></p>
+                  </div>
+                </div>
+              </div><a href="#featured" data-slide="prev" class="left carousel-control"><span class="glyphicon glyphicon-chevron-left"></span></a><a href="#featured" data-slide="next" class="right carousel-control"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div><br>
+            <div class="row">
+              <div sly-repeat="product in products | orderByPriority | limitTo: 3" class="col-sm-4"><img ng-src="http://images.weserv.nl/?url=s3.amazonaws.com/getkickstrap.com/2.0-static/img/{{product.img}}&amp;h=400&amp;w=400&amp;t=square" class="img-rounded center-block img-responsive">
+                <h4 ng-id="slug(product.name)" class="text-center">{{product.name}}</h4>
+                <p>{{product.desc}}</p>
+              </div>
+            </div>
+            <hr>
+            <div id="ads" class="center-block"></div>
+            <hr>
+            <ul style="display: table" class="pagination center-block">
+              <li ks-visible="currentPage != 0"><a href="" ng-click="deincrement()">&laquo;</a></li>
+              <li ng-repeat="genericItem in genericItems | orderByPriority | limitTo:numPages()" ng-click="setCurrentPage($index)" class="{{ currentPage == $index ? 'active': ''}}"><a href="">{{$index+1}}</a></li>
+              <li ks-visible="currentPage &lt; (numPages() - 1)"><a href="" ng-click="increment()">&raquo;	</a></li>
+            </ul>
+            <hr>
+            <div class="row">
+              <div sly-repeat="product in products | orderByPriority | startFrom:startFrom() | limitTo:pageSize" class="col-lg-3 col-sm-4"><a href="cart.html"><img ng-src="http://images.weserv.nl/?url=s3.amazonaws.com/getkickstrap.com/2.0-static/img/{{product.img}}&amp;h=300&amp;w=300&amp;t=square" style="width: 150px;" data-content="{{product.desc}}" data-trigger="hover" data-placement="top" class="img-rounded img-responsive product-img"></a>
+                <p><a href="cart.html" ng-id="slug(product.name)">{{product.name}}</a><br>{{product.price | currency:'$'}}</p>
+              </div>
+            </div>
+            <hr>
+            <ul style="display: table" class="pagination center-block">
+              <li ks-visible="currentPage != 0"><a href="" ng-click="deincrement()">&laquo;</a></li>
+              <li ng-repeat="genericItem in genericItems | orderByPriority | limitTo:numPages()" ng-click="setCurrentPage($index)" class="{{ currentPage == $index ? 'active': ''}}"><a href="">{{$index+1}}</a></li>
+              <li ks-visible="currentPage &lt; (numPages() - 1)"><a href="" ng-click="increment()">&raquo;	</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="sf-push"></div>
+    </div>
+    <section id="sf-footer" class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li>
+            <!-- Copyright: Edit this in app.coffee--><a href="#">&copy; Adam Kochanowicz</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+          <li>
+            <!-- You're welcome to remove this logo, but we'd appreciate it if you'd link to us.-->
+            <!-- The more involvement from the community, the better Kickstrap works for you.--><a href="http://getkickstrap.com">Powered by <span class="kickstrap-logo">Kickstrap</span></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <script src="//cdn.firebase.com/v0/firebase.js"></script>
+    <script src="js/kickstrap.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-1315296-20', 'getkickstrap.com');
+      ga('send', 'pageview');
+    </script><script type="text/javascript">
+(function() {
+  k$.ready(function() {
+    jspm["import"]('ks:advertisements');
+    return k$.demoStylesheet = function() {
+      return $('#main-stylesheet').remove();
+    };
+  });
+
+}).call(this);
+</script><script type="text/javascript">
+(function() {
+  k$.ready(function() {
+    return $.growl({
+      title: "Example page",
+      type: "info",
+      delay: 2000,
+      text: "<br>Use this template to hack your own page."
+    });
+  });
+
+}).call(this);
+</script>
+  </body>
+</html>

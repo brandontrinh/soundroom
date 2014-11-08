@@ -1,0 +1,1 @@
+../../../../assets/apps/ang-app/resources/firebaseSimpleLogin.js
