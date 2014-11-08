@@ -47,6 +47,10 @@
 			$("#top").hide(500);
 			$("#search").show(500);
 		});
+		$("#addbutton").click(function(){
+			var userInput = document.getElementById("searchterm").value;
+    		document.getElementById("demo").innerHTML = userInput;
+		});
 	});
 
 	$(function() {
