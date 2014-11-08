@@ -104,9 +104,7 @@ $(function(){
                 for(var key in all_tracks)
                 {
                     if(all_tracks.hasOwnProperty(key)) {
-                        $("songList").append("<p>"+all_tracks[key]["title"]+"</p>");
-                        $("songList").append("<option>"+all_tracks[key]["title"]+"</option>");
-
+                       $("#songList").append("<p>"+all_tracks[key]["title"]+"</p>");
                     } 
                    
                 }
