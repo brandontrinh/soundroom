@@ -8,6 +8,9 @@ $(function(){
     // store all tracks after a search query
     var all_tracks = [];
 
+
+    var recentlyAdded = [];
+
     // timer to search only after a while
     var timer;
 
@@ -54,6 +57,8 @@ $(function(){
         });
     });
 
+
+
     // main function that handles searching
     $('#searchterm').keyup(function(event) {
 
@@ -91,10 +96,14 @@ $(function(){
             } else {
                 all_tracks = tracks;
                 var track = all_tracks.splice(0, 1)[0];
+                recentlyAdded.push(track);
+                $("#recentlyAdded").append("<p>"+track)+"</p>");
+
                 playTrack(track);
             }
         });
     }
+
 
     // takes a track from SoundCloud and plays it.
     function playTrack(track) {
