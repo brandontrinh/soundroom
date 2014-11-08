@@ -97,7 +97,7 @@ $(function(){
                 all_tracks = tracks;
                 var track = all_tracks.splice(0, 1)[0];
                 recentlyAdded.push(track.title);
-                $("#recentlyAdded").append("<p>"+track.title+"</p>");
+                $("#recentList").append("<p>"+track.title+"</p>");
 
                 playTrack(track);
             }
