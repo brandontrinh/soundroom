@@ -1,1 +1,4 @@
-do json here breh
+{"chillMusic":[
+    {"url":"John", "rate":"Doe", "timeAdded"}, 
+    {"url":"John", "rate":"Doe", "timeAdded"},
+]}
