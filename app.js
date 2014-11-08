@@ -105,15 +105,9 @@ $(function(){
                 {
                     if(all_tracks.hasOwnProperty(key)) {
                         //$("#songList").append("<p>"+all_tracks[key]["title"]+"</p>");
-                       var $select = $('#dropDown');
-                       $.getJSON(all_tracks, function(data) {
-                       $select.html('');
-                       $.each(data.title, function(key, val) {
-                            $select.append('<option id=" ' + val.id + '">' + val.title '</option>');
-                       }
-                       
+                        $("#songList").append("<option>"+all_tracks[key]["title"]+"</option>");
 
-                    } }
+                    } 
                    
                 }
                
