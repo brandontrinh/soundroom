@@ -105,20 +105,15 @@ $(function(){
                 {
                     if(all_tracks.hasOwnProperty(key)) {
                         //$("#songList").append("<p>"+all_tracks[key]["title"]+"</p>");
-                        var myDDL = document.getElementById("dropDown");
-                        for(i = 0; i < all_tracks.title; i++)
-                        {
-                            var option = document.createElement("option");
-                            option.text = all_tracks.title;
-                            //optin.value = all_tracks.uri;
-                            try {
-                                myDDL.options.add(option);
-                            }
-                            catch (e) {
-                                alert(e);
-                            }
-                        }
-                    }
+                       var $select = $('#dropDown');
+                       $.getJSON(all_tracks, function(data) {
+                       $select.html('');
+                       $.each(data.title, function(key, val) {
+                            $select.append('<option id=" ' + val.id + '">' + val.title '</option>');
+                       }
+                       
+
+                    } }
                    
                 }
                
