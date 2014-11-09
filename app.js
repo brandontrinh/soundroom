@@ -106,7 +106,7 @@ $(function(){
                         $("#songList").append("<option value="+ all_tracks[key][val] + ">" + all_tracks[key]["title"]+"</option>");
                     }
                 }
-                playTrack($("#songList").val());
+                playTrack($("#songList").val);
 
 
                 //playTrack(track);
@@ -117,7 +117,7 @@ $(function(){
 
     // takes a track from SoundCloud and plays it.
     function playTrack(track) {
-
+        alert("yay it workedddd!!!");
         cleanUpSpace();
         // console.log(track.uri);
         // update the iframe source
