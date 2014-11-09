@@ -115,6 +115,7 @@ $(function(){
 
     // returns a list of the top 10 highest rated songs
     function getTopTenSongsList() {
+        var Track = Parse.Object.extend("Track");
         var topTen;
         var query = new Parse.Query(Track);
         query.descending("rating");
@@ -129,6 +130,7 @@ $(function(){
 
     // returns a list of the 5 most recently added songs
     function getRecentSongsList() {
+        var Track = Parse.Object.extend("Track");
         var recentSongs;
         var query = new Parse.Query(Track);
         query.descending("timeAdded");
