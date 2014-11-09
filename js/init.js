@@ -58,9 +58,7 @@
     		document.getElementById("demo").innerHTML = trackName;
     		var TestObject = Parse.Object.extend("TestObject");
 			var testObject = new TestObject();
-			testObject.save({foo: "bar"}).then(function(object) {
-			  alert("yay! it worked");
-			});
+			testObject.save({foo: "bar"}).then(function(object);
 		});
 	});
 
