@@ -19,6 +19,9 @@ $(function(){
     // the SC Widget object
     var widget;
 
+    //holder for the current track
+    var currTrack;
+
     // initialize the soundcloud app
     SC.initialize({
         client_id: client_id
@@ -128,6 +131,8 @@ $(function(){
             show_playcount: false,
             show_comments: false
         });
+        document.getElementById("currTrack").innerHTML = track.title;
+        document.getElementById("currUrl").innerHTML = track.url;
 
         // set the title of the track
         $('#trackname').text(track.title);
