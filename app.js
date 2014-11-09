@@ -35,6 +35,14 @@ $(function(){
     top1Frame.src = "https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false";
     SC.Widget(top1Frame);
 
+    // Inject uris for Top 10 song widgets
+    var topTenSongs = getTopTenSongsList(); // a list of Track Parse.Objects
+    for(int i = 0; i < topTenSongs.length; i++) {
+        var frame = $("#top" + (i + 1))[0];
+        frame.src = "https://w.soundcloud.com/player/?url=" + topTenSongs[i].get("url") + "?show_artwork=false";
+        SC.Widget(frame);       
+    }
+
     // keyboard shortcut bindings
     $(document).keydown(function(e) {
         // this won't work if search field is focussed
@@ -112,7 +120,7 @@ $(function(){
         getTopTenSongsList();
     });
 
-    // returns a list of the top 10 highest rated songs
+    // returns a list of the top 10 highest rated Tracks
     function getTopTenSongsList() {
         var Track = Parse.Object.extend("Track");
         var topTen;
@@ -128,7 +136,7 @@ $(function(){
         return topTen; 
     }
 
-    // returns a list of the 5 most recently added songs
+    // returns a list of the 5 most recently added Tracks
     function getRecentSongsList() {
         var Track = Parse.Object.extend("Track");
         var recentSongs;
