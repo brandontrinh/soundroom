@@ -110,6 +110,10 @@ $(function(){
         });
     }
 
+    $("songList")
+        .change(function() {
+            playTrack($("songList"));
+        }
 
     // takes a track from SoundCloud and plays it.
     function playTrack(track) {
