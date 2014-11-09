@@ -42,7 +42,6 @@
 		}
 	});
 
-<<<<<<< HEAD
 	// $(document).ready(function(){
 	// 	Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
 	// 	var PlayList = Parse.Object.extend("PlayList");
@@ -104,8 +103,6 @@
 	     return dateTime;
 	}
 
-=======
->>>>>>> testing
 	$(function() {
 
 		var	$window = $(window),
