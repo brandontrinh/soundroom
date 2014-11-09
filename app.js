@@ -99,21 +99,23 @@ $(function(){
                 all_tracks = tracks;
                 // recentlyAdded.push(track.title);
                 // $("#recentList").append("<p>"+track.title+"</p>");
+                $("#songList").empty();
                 for(var key in all_tracks)
                 {
                     if(all_tracks.hasOwnProperty(key)) {
                         $("#songList").append("<option value="+ all_tracks[key].id + ">" + all_tracks[key]["title"]+"</option>");
                     }
                 }
-                playTrack($("songList"));
             }
         });
     }
 
-    $("songList")
-        .change(function() {
-            playTrack($("songList"));
-        }
+    $('#songList').change(function() {
+        alert("Handler for.change() called.");
+        var song = this.value;
+        playTrack(song);
+    });
+    
 
     // takes a track from SoundCloud and plays it.
     function playTrack(track) {
