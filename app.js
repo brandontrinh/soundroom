@@ -55,13 +55,12 @@ $(function(){
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var Track = Parse.Object.extend("Track");
 
+        var testSong = "<iframe id=&quot;topPlayer1&quot; width=&quot;100%&quot; height=&quot;95px&quot; src=&quot;https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false&quot;></iframe>";
+        $("#topEmbedded").append(testSong);
+
         $("#start").click(function(){
             $("#top").hide(500);
             $("#search").show(500);
-
-        var testSong = "<iframe id="topPlayer1" width="100%" height="95px" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false"></iframe>";
-        $("#topEmbedded").append(testSong);
-
         });
 
 
