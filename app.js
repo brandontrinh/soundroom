@@ -31,9 +31,8 @@ $(function(){
     iframe.src = "http://w.soundcloud.com/player/?url=https://soundcloud.com/porter-robinson/divinity-feat-amy-millan";
     widget = SC.Widget(iframe);
 
-    var top1Frame = $("#top1")[0];
-    top1Frame.src = "https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false";
-    SC.Widget(top1Frame);
+    // Initialize Parse DB
+    Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
 
     // Inject uris for Top 10 song widgets
     var topTenSongs = getTopTenSongsList(); // a list of Track Parse.Objects
@@ -64,7 +63,6 @@ $(function(){
     });
 
     $(document).ready(function() {
-        Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var Track = Parse.Object.extend("Track");
 
         $("#start").click(function(){
