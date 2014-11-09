@@ -110,7 +110,6 @@ $(function(){
     }
 
     $('#songList').change(function() {
-        alert("Handler for.change() called.");
         var song = all_tracks[$(this).val()];
         playTrack(song);
     });
