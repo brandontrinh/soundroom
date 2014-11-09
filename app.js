@@ -51,7 +51,7 @@ $(function(){
         }
     });
 
-        $(document).ready(function(){
+    $(document).ready(function() {
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var Track = Parse.Object.extend("Track");
 
@@ -108,8 +108,37 @@ $(function(){
               }
         }); // End addbutton action
         document.getElementById("currTime").innerHTML = getDateTime();
+        console.log("Top ten songs list length: " + getTopTenSongsList().length);
+        console.log("Most recent songs list length: " + getRecentSongsList().length);
+    });
 
+    // returns a list of the top 10 highest rated songs
+    function getTopTenSongsList() {
+        var topTen;
+        var query = new Parse.Query(Track);
+        query.descending("rating");
+        query.limit(10);
+        query.find({
+           success: function(results) {
+              topTen = results;
+           }
         });
+        return topTen; 
+    }
+
+    // returns a list of the 5 most recently added songs
+    function getRecentSongsList() {
+        var recentSongs;
+        var query = new Parse.Query(Track);
+        query.descending("timeAdded");
+        query.limit(5);
+        query.find({
+           success: function(results) {
+              recentSongs = results;
+           }
+        });
+        return recentSongs;
+    }
 
     function getDateTime() {
         var now     = new Date(); 
