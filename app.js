@@ -108,7 +108,7 @@ $(function(){
                 }
                 track = $("songList").val;
                 console.log(track.title);
-
+                console.log(track.id);
 
                 //playTrack(track);
             }
