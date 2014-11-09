@@ -1,2 +1,4 @@
-Cloudlist
-Crowd generated dope playlist webapp. Dev by Brandon Trinh, Calvin Wong, and Timmy Vo. HackSC 2014.
+SoundRoom
+A collaborative playlist for you and your musical crew. 
+
+Dev by Brandon Trinh, Calvin Wong, and Timmy Vo. HackSC 2014.
