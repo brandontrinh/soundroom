@@ -100,16 +100,14 @@ $(function(){
 
         var artist = 'G-Eazy';
         var my_json;
-        // $.getJSON("http://api.jambase.com/events?artistId=91145&page=0&api_key=r4peddjenqt3eyx23j37vusn", function(json) {
-        // my_json = json;
-        // });
-        // var parsedData = JSON.parse(my_json);
-        // var location = parsedData.City + ", " + parsedData.State;
-        // var date = parsedData.Date;
         my_json = $.getJSON("http://api.jambase.com/events?artistId=91145&page=0&api_key=r4peddjenqt3eyx23j37vusn");
         console.log(my_json);
+        
+        var parsedData = JSON.parse(my_json);
+        var location = parsedData.City + ", " + parsedData.State;
+        var date = parsedData.Date;
 
-        // $("#concert1").html(artist + " - " + location + " " + date);
+        $("#concert1").html(artist + " - " + location + " " + date);
 
         $("#addbutton").click(function(){
 
