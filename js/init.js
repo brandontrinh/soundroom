@@ -50,7 +50,7 @@
 		chillList.save(null, {
 		  success: function(chillList) {
 		    // Execute any logic that should take place after the object is saved.
-		    alert('New object created with objectId: ' + gameScore.id);
+		    alert('New object created with objectId: ' + chillList.id);
 		  },
 		  error: function(chillList, error) {
 		    // Execute any logic that should take place if the save fails.
