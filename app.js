@@ -56,7 +56,7 @@ $(function(){
         var Track = Parse.Object.extend("Track");
 
         var testSong = "<iframe id=&quot;rPlayer1&quot; width=&quot;100%&quot; height=&quot;95px&quot; src=&quot;https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false&quot;></iframe>";
-        $("#topEmbedded").HTML(testSong);
+        $("#topEmbedded").append(testSong);
         //$("#topEmbedded").append("testtext");
 
         $("#start").click(function(){
