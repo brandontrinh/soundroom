@@ -66,6 +66,7 @@ $(function(){
             query.equalTo("url", $(this).attr("url")); // match upvote button with its corresponding player
             query.first({
                 success: function(track) {
+                    alert("no Erro: ";
                     // Increment and update/save the track's rating
                     track.increment("rating");
                     track.save();
