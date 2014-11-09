@@ -100,7 +100,7 @@ $(function(){
                         track.save(null, {
                           success: function(track) {
                             // Execute any logic that should take place after the object is saved.
-                            alert('New song added to Recently Added list, with objectId: ' + track.id);
+                            alert("'" + track.title + "' was added to the Recently Added list.");
                           },
                           error: function(track, error) {
                             // Execute any logic that should take place if the save fails.
