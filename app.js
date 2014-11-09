@@ -103,7 +103,7 @@ $(function(){
                 for(var key in all_tracks)
                 {
                     if(all_tracks.hasOwnProperty(key)) {
-                        $("#songList").append("<option value="+ all_tracks[key][val] + ">" + all_tracks[key]["title"]+"</option>");
+                        $("#songList").append("<option value="+ all_tracks[key].id + ">" + all_tracks[key]["title"]+"</option>");
                     }
                 }
                 playTrack($("#songList option:selected"));
