@@ -70,6 +70,7 @@ $(function(){
                     // Increment and update/save the track's rating
                     track.increment("rating");
                     track.save();
+                    console.log("'" + track.title + "' now has a rating of " + track.get("rating"));
                 },
                 error: function(error) {
                     alert("Error: " + error.code + " " + error.message);
@@ -85,6 +86,7 @@ $(function(){
                     // Decrement and update/save the track's rating
                     track.decrement("rating");
                     track.save();
+                    console.log("'" + track.title + "' now has a rating of " + track.get("rating"));
                 },
                 error: function(error) {
                     alert("Error: " + error.code + " " + error.message);
