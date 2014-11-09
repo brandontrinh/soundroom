@@ -78,6 +78,7 @@ $(function(){
             // var trackName = document.getElementById("searchterm").value;
             //document.getElementById("demo").innerHTML = trackName;
             var song = all_tracks[$('#songList').val()];
+            chillList.set("name", song.title);
             chillList.set("url", song.uri);
             chillList.set("rating", 0);
             chillList.set("timeAdded", getDateTime());
@@ -207,9 +208,6 @@ $(function(){
         currUri = track.uri;
         document.getElementById("currTrack").innerHTML = track.title;
         document.getElementById("currUri").innerHTML = currUri;
-        chillList.set("score", 1337);
-         chillList.set("playerName", "Sean Plott");
-         chillList.set("cheatMode", false);
         // set the title of the track
         $('#trackname').text(track.title);
 
