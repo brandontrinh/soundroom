@@ -71,7 +71,7 @@ $(function(){
 
             // Check if this song is already in the Parse DB, based on its name
               if (!track.get("name")) {
-                response.error('A Track must have a name.');
+               alert('A Track must have a name.');
               } 
               else {
                 var query = new Parse.Query(Track);
@@ -79,7 +79,7 @@ $(function(){
                 query.first({
                   success: function(object) {
                     if (object) {
-                      response.error("A Track with this name already exists.");
+                      alert("A Track with this name already exists.");
                     } 
                     else {
                         // Seems to be a unique song, so it's okay to add
