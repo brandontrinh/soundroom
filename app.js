@@ -74,8 +74,8 @@ $(function(){
 
         });
 
-        $('#recentList').scroll();
-        $("#recentList").animate({ scrollBottom: 1000 }, 2000);
+        $('#recent').scroll();
+        $("#recent").animate({ scrollBottom: 1000 }, 2000);
 
         $("#addbutton").click(function(){
 
