@@ -68,7 +68,7 @@
 		$("#addbutton").click(function(){
 			var trackName = document.getElementById("searchterm").value;
     		//document.getElementById("demo").innerHTML = trackName;
-    		chillList.set("url", trackName.uri);
+    		chillList.set("url", $('#currTrack').text());
 			chillList.set("rating", 0);
 			chillList.set("timeAdded", getDateTime());
 			chillList.save(null, {
