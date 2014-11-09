@@ -54,7 +54,7 @@ $(function(){
         $(document).ready(function(){
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var PlayList = Parse.Object.extend("PlayList");
-        var chillList = new PlayList();
+
 
 
         chillList.save(null, {
@@ -78,6 +78,7 @@ $(function(){
             // var trackName = document.getElementById("searchterm").value;
             //document.getElementById("demo").innerHTML = trackName;
             var song = all_tracks[$('#songList').val()];
+            var chillList = new PlayList();
             chillList.set("name", song.title);
             chillList.set("url", song.uri);
             chillList.set("rating", 0);
@@ -196,8 +197,6 @@ $(function(){
     function playTrack(track) {
 
         cleanUpSpace();
-        // console.log(track.uri);
-        // update the iframe source
         widget.load(track.uri, {
             auto_play: true,
             buying: false,
