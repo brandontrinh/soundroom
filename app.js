@@ -74,6 +74,9 @@ $(function(){
 
         });
 
+        $('#recent').scroll();
+        $("#recent").animate({ scrollTop: 1000 }, 2000);
+
         $("#addbutton").click(function(){
 
             var track = new Track();
