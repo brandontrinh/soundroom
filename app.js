@@ -106,7 +106,8 @@ $(function(){
                         $("#songList").append("<option value="+ all_tracks[key].id + ">" + all_tracks[key]["title"]+"</option>");
                     }
                 }
-                playTrack($("songList").val());
+                track = $("songList").val;
+                console.log(track.title);
 
 
                 //playTrack(track);
