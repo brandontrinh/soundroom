@@ -111,6 +111,8 @@ $(function(){
 
         // $("#concert1").html(artist + " - " + location + " " + date);
 
+        $("#concert1").html(artist + " - " + "loction" + " " + "date");
+
         $("#addbutton").click(function(){
 
             var track = new Track();
