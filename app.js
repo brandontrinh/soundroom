@@ -53,7 +53,7 @@ $(function(){
 
         $(document).ready(function(){
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
-        var PlayList = Parse.Object.extend("PlayList");
+        var Track = Parse.Object.extend("Track");
 
         $("#start").click(function(){
             $("#top").hide(500);
@@ -61,23 +61,45 @@ $(function(){
         });
 
         $("#addbutton").click(function(){
-            // var trackName = document.getElementById("searchterm").value;
-            //document.getElementById("demo").innerHTML = trackName;
-            var chillList = new PlayList();
+
+            var track = new Track();
             var song = all_tracks[$('#songList').val()];
-            chillList.set("name", song.title);
-            chillList.set("url", song.uri);
-            chillList.set("rating", 0);
-            chillList.set("timeAdded", getDateTime());
-            chillList.save(null, {
-              success: function(chillList) {
+            track.set("name", song.title);
+            track.set("url", song.uri);
+            track.set("rating", 0);
+            track.set("timeAdded", getDateTime());
+
+            // Check if this song is already in the Parse DB, based on its name
+            Parse.Cloud.beforeSave("Track", function(request, response) {
+              if (!request.object.get("name")) {
+                response.error('A Track must have a name.');
+              } else {
+                var query = new Parse.Query(Track);
+                query.equalTo("name", request.object.get("name"));
+                query.first({
+                  success: function(object) {
+                    if (object) {
+                      response.error("A Track with this name already exists.");
+                    } else {
+                      response.success();
+                    }
+                  },
+                  error: function(error) {
+                    response.error("Could not validate uniqueness for this Track object.");
+                  }
+                });
+              }
+            });
+
+            track.save(null, {
+              success: function(track) {
                 // Execute any logic that should take place after the object is saved.
-                alert('New object created with objectId: ' + chillList.id);
+                alert('New song added to Recently Added list, with objectId: ' + track.id);
               },
-              error: function(chillList, error) {
+              error: function(track, error) {
                 // Execute any logic that should take place if the save fails.
                 // error is a Parse.Error with an error code and message.
-                alert('Failed to create new object, with error code: ' + error.message);
+                alert('Failed to add new song to Recently Added list, with error code: ' + error.message);
               }
             });
         });
