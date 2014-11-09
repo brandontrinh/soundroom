@@ -18,7 +18,23 @@
      	<script src="http://w.soundcloud.com/player/api.js"></script>
      	<script src="//www.parsecdn.com/js/parse-1.3.1.min.js"></script>
 		
+   <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '682638971857343',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
 
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -174,6 +190,12 @@
 				<!-- Copyright -->
 					<ul class="copyright">
 						<li>Have fun!</li>
+						<div
+					  class="fb-like"
+					  data-send="true"
+					  data-width="450"
+					  data-show-faces="true">
+					</div>
 					</ul>
 				
 			</div>
