@@ -82,6 +82,7 @@ $(function(){
             chillList.set("url", song.uri);
             chillList.set("rating", 0);
             chillList.set("timeAdded", getDateTime());
+            PlayList.add(chillList);
             chillList.save(null, {
               success: function(chillList) {
                 // Execute any logic that should take place after the object is saved.
