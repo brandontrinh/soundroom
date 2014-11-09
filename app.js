@@ -68,13 +68,14 @@ $(function(){
         $("#up").click(function() {
             var query = new Parse.Query(Track);
             query.first(up).increment();
+            query.save();
 
         });
 
         $("down").click(function() { 
             var query = new Parse.query(Track);
             query.first(up).decremenet();
-
+            query.save();
         });
 
 
