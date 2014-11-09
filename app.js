@@ -58,6 +58,14 @@ $(function(){
         $("#start").click(function(){
             $("#top").hide(500);
             $("#search").show(500);
+            var query = new Parse.Query(Track);
+            query.ascending("timeAdded");
+            query.limit(10);
+                success: function(results) {
+                    for(var i = 0; i < results.length; i++) {
+                        $("#recentList").append("<p>" + results[i].get(name) + "</p>");
+                    }
+                }
         });
 
         $("#addbutton").click(function(){
@@ -101,6 +109,14 @@ $(function(){
                   }
                 });
               }
+              var query = new Parse.Query(Track);
+            query.ascending("timeAdded");
+            query.limit(10);
+                success: function(results) {
+                    for(var i = 0; i < results.length; i++) {
+                        $("#recentList").append("<p>" + results[i].get(name) + "</p>");
+                    }
+                }
         }); // End addbutton action
         document.getElementById("currTime").innerHTML = getDateTime();
 
