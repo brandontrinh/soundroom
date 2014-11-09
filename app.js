@@ -31,6 +31,10 @@ $(function(){
     iframe.src = "http://w.soundcloud.com/player/?url=https://soundcloud.com/porter-robinson/divinity-feat-amy-millan";
     widget = SC.Widget(iframe);
 
+    var top1Frame = $("#top1")[0];
+    top1Frame.src = "https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false";
+    SC.Widget(top1Frame);
+
     // keyboard shortcut bindings
     $(document).keydown(function(e) {
         // this won't work if search field is focussed
@@ -54,10 +58,6 @@ $(function(){
     $(document).ready(function() {
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var Track = Parse.Object.extend("Track");
-
-        var testSong = "<iframe id=&quot;rPlayer1&quot; width=&quot;100%&quot; height=&quot;95px&quot; src=&quot;https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false&quot;></iframe>";
-        $("#topEmbedded").append(testSong);
-        //$("#topEmbedded").append("testtext");
 
         $("#start").click(function(){
             $("#top").hide(500);
