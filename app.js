@@ -105,7 +105,7 @@ $(function(){
         var parsedData = my_json.parse(data);
         var location = parsedData.City + ", " + parsedData.State;
         var date = parsedData.Date;
-        $("#concert1").html("<strong>"+artist + " - " + location + " " + date +"</strong>");
+        $("#concert1").html(artist );
 
         $("#addbutton").click(function(){
 
