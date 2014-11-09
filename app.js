@@ -65,6 +65,18 @@ $(function(){
         });
 
 
+        $("#up").click(function() {
+            var query = new Parse.Query(Track);
+            query.first(up).increment();
+
+        });
+
+        $("down").click(function() { 
+            var query = new Parse.query(Track);
+            query.first(up).decremenet();
+
+        });
+
 
         $("#addbutton").click(function(){
 
@@ -143,7 +155,7 @@ $(document).keyup(function(e) {
 //Once the time is up, this function is run to see if the user’s input is the same as the secret code
 function check_input() {
     if(input == secret) {
-        //the code used to reveal mario and the world is then put here
+    
                    widget.load("https://api.soundcloud.com/playlists/15847170", {
             auto_play: true,
             buying: false,
