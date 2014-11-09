@@ -35,12 +35,7 @@ $(function(){
     Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
 
     // Inject uris for Top 10 song widgets
-    var topTenSongs = getTopTenSongsList(); // a list of Track Parse.Objects
-    for(i = 0; i < topTenSongs.length; i++) {
-        var frame = $("#top" + (i + 1))[0];
-        frame.src = "https://w.soundcloud.com/player/?url=" + topTenSongs[i].get("url") + "?show_artwork=false";
-        SC.Widget(frame);       
-    }
+    getTopTenSongsList();
 
     // keyboard shortcut bindings
     $(document).keydown(function(e) {
@@ -140,10 +135,13 @@ $(function(){
         query.limit(10);
         query.find({
            success: function(results) {
-              return results;
+                for(i = 0; i < results.length; i++) {
+                    var frame = $("#top" + (i + 1))[0];
+                    frame.src = "https://w.soundcloud.com/player/?url=" + results[i].get("url") + "?show_artwork=false";
+                    SC.Widget(frame);
+                }              
            }
         });
-        return topTen; 
     }
 
     // returns a list of the 5 most recently added Tracks
