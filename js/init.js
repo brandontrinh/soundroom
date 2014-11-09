@@ -42,12 +42,6 @@
 		}
 	});
 
-	
-	  $(function() {
-	    $( "#accordion" ).accordion();
-	  });
-
-
 	function getDateTime() {
 	    var now     = new Date(); 
 	    var year    = now.getFullYear();

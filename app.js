@@ -54,7 +54,6 @@ $(function(){
         $(document).ready(function(){
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var Track = Parse.Object.extend("Track");
-        $( "#accordion" ).accordion();
 
         $("#start").click(function(){
             $("#top").hide(500);
