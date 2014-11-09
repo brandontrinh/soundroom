@@ -100,7 +100,7 @@ $(function(){
         var artist = 'G-Eazy';
         var location;
         var date;
-        $("#concert1").html("Hello world");
+        $("#concert1").html(artist + " - " + "loction" + " " + "date");
 
         $("#addbutton").click(function(){
 
