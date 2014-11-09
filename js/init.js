@@ -80,6 +80,8 @@
 			  }
 			});
 		});
+		document.getElementById("currTime").innerHTML = getDateTime();
+
 	});
 
 	function getDateTime() {

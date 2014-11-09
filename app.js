@@ -131,9 +131,9 @@ $(function(){
             show_playcount: false,
             show_comments: false
         });
-        currUrl = track.url;
+        currUri = track.uri;
         document.getElementById("currTrack").innerHTML = track.title;
-        document.getElementById("currUrl").innerHTML = currUrl;
+        document.getElementById("currUri").innerHTML = currUri;
         // set the title of the track
         $('#trackname').text(track.title);
 
