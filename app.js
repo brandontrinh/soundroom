@@ -31,12 +31,13 @@ $(function(){
     iframe.src = "http://w.soundcloud.com/player/?url=https://soundcloud.com/porter-robinson/divinity-feat-amy-millan";
     widget = SC.Widget(iframe);
 
-    // Initialize Parse DB
-    Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
+    var top1Frame = $("#top1")[0];
+    top1Frame.src = "https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false";
+    SC.Widget(top1Frame);
 
     // Inject uris for Top 10 song widgets
     var topTenSongs = getTopTenSongsList(); // a list of Track Parse.Objects
-    for(i = 0; i < topTenSongs.length; i++) {
+    for(int i = 0; i < topTenSongs.length; i++) {
         var frame = $("#top" + (i + 1))[0];
         frame.src = "https://w.soundcloud.com/player/?url=" + topTenSongs[i].get("url") + "?show_artwork=false";
         SC.Widget(frame);       
@@ -63,6 +64,7 @@ $(function(){
     });
 
     $(document).ready(function() {
+        Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var Track = Parse.Object.extend("Track");
 
         $("#start").click(function(){
@@ -70,19 +72,6 @@ $(function(){
             $("#search").show(500);
         });
 
-
-        $("#up").click(function() {
-            var query = new Parse.Query(Track);
-            query.first(up).increment();
-            query.save();
-
-        });
-
-        $("down").click(function() { 
-            var query = new Parse.query(Track);
-            query.first(up).decremenet();
-            query.save();
-        });
 
 
         $("#addbutton").click(function(){
@@ -141,6 +130,7 @@ $(function(){
         query.find({
            success: function(results) {
               topTen = results;
+              console.log("First value: " + results[0].get("url"));
            }
         });
         return topTen; 
@@ -160,31 +150,6 @@ $(function(){
         });
         return recentSongs;
     }
-
-//’secret’ specifies the numerical keystrokes that make up the word “mario”
-var secret = "7765827379"; 
-var input = "";
-var timer;
-//The following function sets a timer that checks for user input. You can change the variation in how long the user has to input by changing the number in ‘setTimeout.’ In this case, it’s set for 500 milliseconds or ½ second.
-$(document).keyup(function(e) {
-   input += e.which;    
-   clearTimeout(timer);
-   timer = setTimeout(function() { input = ""; }, 500);
-   check_input();
-});
-//Once the time is up, this function is run to see if the user’s input is the same as the secret code
-function check_input() {
-    if(input == secret) {
-    
-                   widget.load("https://api.soundcloud.com/playlists/15847170", {
-            auto_play: true,
-            buying: false,
-            sharing: false,
-            show_playcount: false,
-            show_comments: false
-        });
-    }
-};
 
     function getDateTime() {
         var now     = new Date(); 
