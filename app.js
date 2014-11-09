@@ -177,6 +177,7 @@ $(function(){
 
     // searches and plays a track
     function instaSearch(q) {
+        $('#songList').show();
         SC.get('/tracks', { q: q, limit: 10 }, function(tracks) {
             if (tracks.length == 0) {
                 cleanUpSpace();
