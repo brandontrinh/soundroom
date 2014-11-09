@@ -70,39 +70,38 @@ $(function(){
             track.set("timeAdded", getDateTime());
 
             // Check if this song is already in the Parse DB, based on its name
-            Parse.Cloud.beforeSave("Track", function(request, response) {
-              if (!request.object.get("name")) {
+              if (!track.get("name")) {
                 response.error('A Track must have a name.');
-              } else {
+              } 
+              else {
                 var query = new Parse.Query(Track);
-                query.equalTo("name", request.object.get("name"));
+                query.equalTo("name", track.get("name"));
                 query.first({
                   success: function(object) {
                     if (object) {
                       response.error("A Track with this name already exists.");
-                    } else {
-                      response.success();
+                    } 
+                    else {
+                        // Seems to be a unique song, so it's okay to add
+                        track.save(null, {
+                          success: function(track) {
+                            // Execute any logic that should take place after the object is saved.
+                            alert('New song added to Recently Added list, with objectId: ' + track.id);
+                          },
+                          error: function(track, error) {
+                            // Execute any logic that should take place if the save fails.
+                            // error is a Parse.Error with an error code and message.
+                            alert('Failed to add new song to Recently Added list, with error code: ' + error.message);
+                          }
+                        });
                     }
                   },
                   error: function(error) {
-                    response.error("Could not validate uniqueness for this Track object.");
+                    alert("There was an error while validating uniqueness for this Track object.");
                   }
                 });
               }
-            });
-
-            track.save(null, {
-              success: function(track) {
-                // Execute any logic that should take place after the object is saved.
-                alert('New song added to Recently Added list, with objectId: ' + track.id);
-              },
-              error: function(track, error) {
-                // Execute any logic that should take place if the save fails.
-                // error is a Parse.Error with an error code and message.
-                alert('Failed to add new song to Recently Added list, with error code: ' + error.message);
-              }
-            });
-        });
+        }); // End addbutton action
         document.getElementById("currTime").innerHTML = getDateTime();
 
         });
