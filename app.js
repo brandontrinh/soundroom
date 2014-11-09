@@ -103,7 +103,7 @@ $(function(){
                 for(var key in all_tracks)
                 {
                     if(all_tracks.hasOwnProperty(key)) {
-                        $("#songList").append("<option value="+ all_tracks[key].id + ">" + all_tracks[key]["title"]+"</option>");
+                        $("#songList").append("<option value="+ key + ">" + all_tracks[key]["title"]+"</option>");
                     }
                 }
             }
@@ -112,7 +112,7 @@ $(function(){
 
     $('#songList').change(function() {
         alert("Handler for.change() called.");
-        var song = this.value;
+        var song = all_tracks[$(this).val()];
         playTrack(song);
     });
     
