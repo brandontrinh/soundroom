@@ -97,7 +97,6 @@ $(function(){
                 $('#error').append('No tracks found');
             } else {
                 all_tracks = tracks;
-                var track = all_tracks.splice(0, 1)[0];
                 // recentlyAdded.push(track.title);
                 // $("#recentList").append("<p>"+track.title+"</p>");
                 for(var key in all_tracks)
@@ -106,7 +105,7 @@ $(function(){
                         $("#songList").append("<option value="+ all_tracks[key].id + ">" + all_tracks[key]["title"]+"</option>");
                     }
                 }
-                playTrack(track);
+                playTrack(all_tracks);
             }
         });
     }
