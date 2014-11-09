@@ -64,7 +64,7 @@
 		});
 		$("#addbutton").click(function(){
 			var trackName = document.getElementById("searchterm").value;
-    		document.getElementById("demo").innerHTML = trackName;
+    		//document.getElementById("demo").innerHTML = trackName;
     		chillList.set("url", "https://soundcloud.com/porter-robinson/divinity-feat-amy-millan");
 			chillList.set("rating", 0);
 			chillList.set("timeAdded", getDateTime());
