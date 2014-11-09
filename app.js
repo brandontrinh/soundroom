@@ -97,6 +97,11 @@ $(function(){
         $('#recent').scroll();
         $("#recent").animate({ scrollBottom: 1000 }, 2000);
 
+        var artist = 'G-Eazy';
+        var location;
+        var date;
+        $('#concert1').innerHTML() = artist + " - " +location + " " + date;
+
         $("#addbutton").click(function(){
 
             var track = new Track();
