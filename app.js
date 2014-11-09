@@ -37,7 +37,7 @@ $(function(){
 
     // Inject uris for Top 10 song widgets
     var topTenSongs = getTopTenSongsList(); // a list of Track Parse.Objects
-    for(int i = 0; i < topTenSongs.length; i++) {
+    for(i = 0; i < topTenSongs.length; i++) {
         var frame = $("#top" + (i + 1))[0];
         frame.src = "https://w.soundcloud.com/player/?url=" + topTenSongs[i].get("url") + "?show_artwork=false";
         SC.Widget(frame);       
