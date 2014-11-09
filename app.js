@@ -105,7 +105,7 @@ $(function(){
                         $("#songList").append("<option value="+ all_tracks[key].id + ">" + all_tracks[key]["title"]+"</option>");
                     }
                 }
-                playTrack(all_tracks);
+                playTrack($("songList"));
             }
         });
     }
