@@ -36,6 +36,7 @@ $(function(){
 
     // Inject uris for Top 10 song widgets
     var topTenSongs = getTopTenSongsList(); // a list of Track Parse.Objects
+    console.log(topTenSongs[0].get("url")); // testing for actual results
     for(i = 0; i < topTenSongs.length; i++) {
         var frame = $("#top" + (i + 1))[0];
         frame.src = "https://w.soundcloud.com/player/?url=" + topTenSongs[i].get("url") + "?show_artwork=false";
@@ -138,12 +139,7 @@ $(function(){
         var query = new Parse.Query(Track);
         query.descending("rating");
         query.limit(10);
-        query.find({
-           success: function(results) {
-              return results;
-           }
-        });
-        return topTen; 
+        return query.find();
     }
 
     // returns a list of the 5 most recently added Tracks
