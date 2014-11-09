@@ -31,18 +31,6 @@ $(function(){
     iframe.src = "http://w.soundcloud.com/player/?url=https://soundcloud.com/porter-robinson/divinity-feat-amy-millan";
     widget = SC.Widget(iframe);
 
-    var top1Frame = $("#top1")[0];
-    top1Frame.src = "https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false";
-    SC.Widget(top1Frame);
-
-    // Inject uris for Top 10 song widgets
-    var topTenSongs = getTopTenSongsList(); // a list of Track Parse.Objects
-    for(i = 0; i < topTenSongs.length; i++) {
-        var frame = $("#top" + (i + 1))[0];
-        frame.src = "https://w.soundcloud.com/player/?url=" + topTenSongs[i].get("url") + "?show_artwork=false";
-        SC.Widget(frame);       
-    }
-
     // keyboard shortcut bindings
     $(document).keydown(function(e) {
         // this won't work if search field is focussed
@@ -130,7 +118,6 @@ $(function(){
               }
         }); // End addbutton action
         document.getElementById("currTime").innerHTML = getDateTime();
-        getTopTenSongsList();
     });
 
     // returns a list of the top 10 highest rated Tracks
