@@ -118,20 +118,23 @@ $(function(){
         }); // End addbutton action
         document.getElementById("currTime").innerHTML = getDateTime();
 
-        // Inject URIs into Top 10 embedded players
+        // Inject URIs into Top Songs embedded players
         getTopTenSongsList();
         getRecentSongsList();
     });
 
-    // returns a list of the top 10 highest rated songs
+    var MAX_NUM_TOP_SONGS = 5;
+    var MAX_NUM_RECENT_SONGS = 10;
+
+    // returns a list of the top Songs highest rated songs
     function getTopTenSongsList() {
         var Track = Parse.Object.extend("Track");
         var query = new Parse.Query(Track);
         query.descending("rating");
-        query.limit(10);
+        query.limit(MAX_NUM_TOP_SONGS);
         query.find({
            success: function(results) {
-                // On successful find, populate Top 10 song list with players
+                // On successful find, populate Top Songs list with players
                 for(i = 0; i < results.length; i++) {
                     var frame = $("#top" + (i + 1))[0];
                     frame.src = "https://w.soundcloud.com/player/?url=" + results[i].get("url") + "?show_artwork=false";
@@ -146,7 +149,7 @@ $(function(){
         var Track = Parse.Object.extend("Track");
         var query = new Parse.Query(Track);
         query.descending("timeAdded");
-        query.limit(5);
+        query.limit(MAX_NUM_RECENT_SONGS);
         query.find({
            success: function(results) {
                 // On successful find, populate Recently Added song list with players
