@@ -67,10 +67,8 @@ $(function(){
             query.first({
                 success: function(track) {
                     // Increment and update/save the track's rating
-                    console.log("Track has a rating of " + track.get("rating"));
-                    track.set("rating", track.get("rating") + 1);
+                    track.increment("rating");
                     track.save();
-
                     console.log(track);
                     console.log(track[0]);
                     console.log("'" + track.title + "' now has a rating of " + track.get("rating"));
@@ -110,8 +108,6 @@ $(function(){
         // var date = parsedData.Date;
         my_json = $.getJSON("http://api.jambase.com/events?artistId=91145&page=0&api_key=r4peddjenqt3eyx23j37vusn");
         console.log(my_json);
-        console.log(my_json.responseJSON);
-        console.log(my_json.responseJSON.Events[0].Artists[0].Name);
 
         // $("#concert1").html(artist + " - " + location + " " + date);
 
