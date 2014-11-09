@@ -120,6 +120,7 @@ $(function(){
 
         // Inject URIs into Top 10 embedded players
         getTopTenSongsList();
+        getRecentSongsList();
     });
 
     // returns a list of the top 10 highest rated songs
@@ -130,6 +131,7 @@ $(function(){
         query.limit(10);
         query.find({
            success: function(results) {
+                // On successful find, populate Top 10 song list with players
                 for(i = 0; i < results.length; i++) {
                     var frame = $("#top" + (i + 1))[0];
                     frame.src = "https://w.soundcloud.com/player/?url=" + results[i].get("url") + "?show_artwork=false";
@@ -142,16 +144,19 @@ $(function(){
     // returns a list of the 5 most recently added songs
     function getRecentSongsList() {
         var Track = Parse.Object.extend("Track");
-        var recentSongs;
         var query = new Parse.Query(Track);
         query.descending("timeAdded");
         query.limit(5);
         query.find({
            success: function(results) {
-              recentSongs = results;
+                // On successful find, populate Recently Added song list with players
+                for(i = 0; i < results.length; i++) {
+                    var frame = $("#rPlayer" + (i + 11))[0];
+                    frame.src = "https://w.soundcloud.com/player/?url=" + results[i].get("url") + "?show_artwork=false";
+                    SC.Widget(frame);
+                }              
            }
         });
-        return recentSongs;
     }
 
     function getDateTime() {
