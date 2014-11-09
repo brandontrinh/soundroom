@@ -102,7 +102,7 @@ $(function(){
         $.getJSON("http://api.jambase.com/events?artistId=91145&page=0&api_key=r4peddjenqt3eyx23j37vusn", function(json) {
         my_json = json;
         });
-        var parsedData = my_json.parse(data);
+        var parsedData = JSON.parse(my_json);
         var location = parsedData.City + ", " + parsedData.State;
         var date = parsedData.Date;
         $("#concert1").html(artist + " - " + loction + " " + date);
