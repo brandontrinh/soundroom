@@ -122,7 +122,7 @@ $(function(){
         query.find({
            success: function(results) {
               topTen = results;
-              console.log("First value: " + results[0]);
+              console.log("First value: " + results[0].get("url");
            }
         });
         return topTen; 
