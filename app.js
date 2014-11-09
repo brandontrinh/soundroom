@@ -140,7 +140,7 @@ $(function(){
         query.limit(10);
         query.find({
            success: function(results) {
-              topTen = results;
+              return results;
            }
         });
         return topTen; 
