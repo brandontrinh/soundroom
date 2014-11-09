@@ -55,7 +55,6 @@ $(function(){
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var Track = Parse.Object.extend("Track");
 
-        getTopTenSongsList();
 
         $("#start").click(function(){
             $("#top").hide(500);
@@ -70,6 +69,8 @@ $(function(){
                     // Increment and update/save the track's rating
                     track.increment("rating");
                     track.save();
+                    console.log(track);
+                    console.log(track[0]);
                     console.log("'" + track.title + "' now has a rating of " + track.get("rating"));
                 },
                 error: function(error) {
