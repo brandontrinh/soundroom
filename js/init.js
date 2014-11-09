@@ -46,7 +46,10 @@
 		Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
 		var PlayList = Parse.Object.extend("PlayList");
 		var chillList = new PlayList();
-		 
+		 chillList.set("score", 1337);
+		 chillList.set("playerName", "Sean Plott");
+		 chillList.set("cheatMode", false);
+
 		chillList.save(null, {
 		  success: function(chillList) {
 		    // Execute any logic that should take place after the object is saved.
@@ -58,10 +61,12 @@
 		    //alert('Failed to create new object, with error code: ' + error.message);
 		  }
 		});
+
 		$("#start").click(function(){
 			$("#top").hide(500);
 			$("#search").show(500);
 		});
+
 		$("#addbutton").click(function(){
 			var trackName = document.getElementById("searchterm").value;
     		//document.getElementById("demo").innerHTML = trackName;
