@@ -142,6 +142,9 @@ $(function(){
                     var frame = $("#top" + (i + 1))[0];
                     frame.src = "https://w.soundcloud.com/player/?url=" + results[i].get("url") + "?show_artwork=false";
                     SC.Widget(frame);
+                    if(i<2) {
+                        // use jam base api here
+                    }
                 }
            }
         });
