@@ -64,14 +64,32 @@ $(function(){
 
         $(".upvote").click(function() {
             var query = new Parse.Query(Track);
-            query.first(up).increment();
-
+            query.equalTo("url", $(this).attr("url")); // match upvote button with its corresponding player
+            query.first({
+                success: function(track) {
+                    // Increment and update/save the track's rating
+                    track.increment("rating");
+                    track.save();
+                },
+                error: function(error) {
+                    alert("Error: " + error.code + " " + error.message);
+                }
+            }); // end query.first()
         });
 
         $(".downvote").click(function() { 
-            var query = new Parse.query(Track);
-            query.first(up).decremenet();
-
+            var query = new Parse.Query(Track);
+            query.equalTo("url", $(this).attr("url")); // match downvote button with its corresponding player
+            query.first({
+                success: function(track) {
+                    // Decrement and update/save the track's rating
+                    track.decrement("rating");
+                    track.save();
+                },
+                error: function(error) {
+                    alert("Error: " + error.code + " " + error.message);
+                }
+            }); // end query.first()
         });
 
         $('#recent').scroll();
@@ -157,9 +175,18 @@ $(function(){
            success: function(results) {
                 // On successful find, populate Recently Added song list with players
                 for(i = 0; i < results.length; i++) {
-                    var frame = $("#rPlayer" + (i + 11))[0];
-                    frame.src = "https://w.soundcloud.com/player/?url=" + results[i].get("url") + "?show_artwork=false";
-                    SC.Widget(frame);
+                    var suffix = i + 11; // numerical suffix for the player
+                    var uri = results[i].get("url"); // uri, used for identifying and streaming the song
+                    var frame = $("#rPlayer" + suffix)[0]; // get the iframe for the track's player
+                    frame.setAttribute("data-url", uri); // the uri is used to identify the track and its vote buttons
+                    frame.src = "https://w.soundcloud.com/player/?url=" + uri + "?show_artwork=false";
+                    SC.Widget(frame); // create the soundcloud player widget
+
+                    // Associate this track with its upvote/downvote buttons by its uri
+                    var upvote = $("#upvote" + suffix)[0];
+                    upvote.setAttribute("data-url", uri);
+                    var downvote = $("#downvote" + suffix)[0];
+                    downvote.setAttribute("data-url", uri);
                 }              
            }
         });
