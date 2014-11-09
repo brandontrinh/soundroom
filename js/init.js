@@ -42,51 +42,39 @@
 		}
 	});
 
-	$(document).ready(function(){
-		Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
-		var PlayList = Parse.Object.extend("PlayList");
-		var chillList = new PlayList();
+	// $(document).ready(function(){
+	// 	Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
+	// 	var PlayList = Parse.Object.extend("PlayList");
 
+	// 	$("#start").click(function(){
+	// 		$("#top").hide(500);
+	// 		$("#search").show(500);
+	// 	});
 
-		chillList.save(null, {
-		  success: function(chillList) {
-		    // Execute any logic that should take place after the object is saved.
-		    //alert('New object created with objectId: ' + chillList.id);
-		  },
-		  error: function(chillList, error) {
-		    // Execute any logic that should take place if the save fails.
-		    // error is a Parse.Error with an error code and message.
-		    //alert('Failed to create new object, with error code: ' + error.message);
-		  }
-		});
+	// 	$("#addbutton").click(function(){
+	// 		// var trackName = document.getElementById("searchterm").value;
+ //    		//document.getElementById("demo").innerHTML = trackName;
 
-		$("#start").click(function(){
-			$("#top").hide(500);
-			$("#search").show(500);
-		});
+ //    		var chillList = new PlayList();
+ //    		var song = all_tracks[$('#songList').val()];
+ //    		chillList.set("url", song.uri);
+	// 		chillList.set("rating", 0);
+	// 		chillList.set("timeAdded", getDateTime());
+	// 		chillList.save(null, {
+	// 		  success: function(chillList) {
+	// 		    // Execute any logic that should take place after the object is saved.
+	// 		    alert('New object created with objectId: ' + chillList.id);
+	// 		  },
+	// 		  error: function(chillList, error) {
+	// 		    // Execute any logic that should take place if the save fails.
+	// 		    // error is a Parse.Error with an error code and message.
+	// 		    alert('Failed to create new object, with error code: ' + error.message);
+	// 		  }
+	// 		});
+	// 	});
+	// 	document.getElementById("currTime").innerHTML = getDateTime();
 
-		$("#addbutton").click(function(){
-			// var trackName = document.getElementById("searchterm").value;
-    		//document.getElementById("demo").innerHTML = trackName;
-    		var song = all_tracks[$('#songList').val()];
-    		chillList.set("url", song.uri);
-			chillList.set("rating", 0);
-			chillList.set("timeAdded", getDateTime());
-			chillList.save(null, {
-			  success: function(chillList) {
-			    // Execute any logic that should take place after the object is saved.
-			    alert('New object created with objectId: ' + chillList.id);
-			  },
-			  error: function(chillList, error) {
-			    // Execute any logic that should take place if the save fails.
-			    // error is a Parse.Error with an error code and message.
-			    alert('Failed to create new object, with error code: ' + error.message);
-			  }
-			});
-		});
-		document.getElementById("currTime").innerHTML = getDateTime();
-
-	});
+	// });
 
 	function getDateTime() {
 	    var now     = new Date(); 

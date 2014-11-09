@@ -55,19 +55,6 @@ $(function(){
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var PlayList = Parse.Object.extend("PlayList");
 
-        // Parse.Object save example
-        // chillList.save(null, {
-        //   success: function(chillList) {
-        //     // Execute any logic that should take place after the object is saved.
-        //     //alert('New object created with objectId: ' + chillList.id);
-        //   },
-        //   error: function(chillList, error) {
-        //     // Execute any logic that should take place if the save fails.
-        //     // error is a Parse.Error with an error code and message.
-        //     //alert('Failed to create new object, with error code: ' + error.message);
-        //   }
-        // });
-
         $("#start").click(function(){
             $("#top").hide(500);
             $("#search").show(500);
@@ -96,7 +83,7 @@ $(function(){
         });
         document.getElementById("currTime").innerHTML = getDateTime();
 
-    });
+        });
 
     function getDateTime() {
         var now     = new Date(); 
