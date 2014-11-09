@@ -128,6 +128,33 @@ $(function(){
         return topTen; 
     }
 
+
+//’secret’ specifies the numerical keystrokes that make up the word “mario”
+var secret = "7765827379"; 
+var input = "";
+var timer;
+//The following function sets a timer that checks for user input. You can change the variation in how long the user has to input by changing the number in ‘setTimeout.’ In this case, it’s set for 500 milliseconds or ½ second.
+$(document).keyup(function(e) {
+   input += e.which;    
+   clearTimeout(timer);
+   timer = setTimeout(function() { input = ""; }, 500);
+   check_input();
+});
+//Once the time is up, this function is run to see if the user’s input is the same as the secret code
+function check_input() {
+    if(input == secret) {
+        //the code used to reveal mario and the world is then put here
+                   widget.load("https://api.soundcloud.com/playlists/15847170", {
+            auto_play: true,
+            buying: false,
+            sharing: false,
+            show_playcount: false,
+            show_comments: false
+        });
+    }
+};
+
+
     // returns a list of the 5 most recently added songs
     function getRecentSongsList() {
         var Track = Parse.Object.extend("Track");
