@@ -66,9 +66,10 @@
 		});
 
 		$("#addbutton").click(function(){
-			var trackName = document.getElementById("searchterm").value;
+			// var trackName = document.getElementById("searchterm").value;
     		//document.getElementById("demo").innerHTML = trackName;
-    		chillList.set("url", $('#currTrack').text());
+    		var song = all_tracks[$('#songList').val()];
+    		chillList.set("url", song.uri);
 			chillList.set("rating", 0);
 			chillList.set("timeAdded", getDateTime());
 			chillList.save(null, {
