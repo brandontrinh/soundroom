@@ -97,8 +97,6 @@ $(function(){
                 $('#error').append('No tracks found');
             } else {
                 all_tracks = tracks;
-                // recentlyAdded.push(track.title);
-                // $("#recentList").append("<p>"+track.title+"</p>");
                 $("#songList").empty();
                 for(var key in all_tracks)
                 {
