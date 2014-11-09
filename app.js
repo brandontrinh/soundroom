@@ -58,7 +58,13 @@ $(function(){
         $("#start").click(function(){
             $("#top").hide(500);
             $("#search").show(500);
+
+        var testSong = "<iframe id="topPlayer1" width="100%" height="95px" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false"></iframe>";
+        $("#topEmbedded").append(testSong);
+
         });
+
+
 
         $("#addbutton").click(function(){
 
