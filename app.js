@@ -109,8 +109,7 @@ $(function(){
               }
         }); // End addbutton action
         document.getElementById("currTime").innerHTML = getDateTime();
-        console.log("Top ten songs list length: " + getTopTenSongsList().length);
-        console.log("Most recent songs list length: " + getRecentSongsList().length);
+        getTopTenSongsList();
     });
 
     // returns a list of the top 10 highest rated songs
@@ -123,6 +122,7 @@ $(function(){
         query.find({
            success: function(results) {
               topTen = results;
+              console.log("First value: " + results[0]);
            }
         });
         return topTen; 
