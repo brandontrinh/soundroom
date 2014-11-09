@@ -62,6 +62,18 @@ $(function(){
             $("#search").show(500);
         });
 
+        $(".upvote").click(function() {
+            var query = new Parse.Query(Track);
+            query.first(up).increment();
+
+        });
+
+        $(".downvote").click(function() { 
+            var query = new Parse.query(Track);
+            query.first(up).decremenet();
+
+        });
+
         $("#addbutton").click(function(){
 
             var track = new Track();
