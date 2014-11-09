@@ -134,6 +134,9 @@ $(function(){
         currUri = track.uri;
         document.getElementById("currTrack").innerHTML = track.title;
         document.getElementById("currUri").innerHTML = currUri;
+        chillList.set("score", 1337);
+         chillList.set("playerName", "Sean Plott");
+         chillList.set("cheatMode", false);
         // set the title of the track
         $('#trackname').text(track.title);
 

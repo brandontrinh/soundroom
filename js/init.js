@@ -46,9 +46,7 @@
 		Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
 		var PlayList = Parse.Object.extend("PlayList");
 		var chillList = new PlayList();
-		 chillList.set("score", 1337);
-		 chillList.set("playerName", "Sean Plott");
-		 chillList.set("cheatMode", false);
+
 
 		chillList.save(null, {
 		  success: function(chillList) {
