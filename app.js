@@ -132,7 +132,7 @@ $(function(){
             show_comments: false
         });
         document.getElementById("currTrack").innerHTML = track.title;
-        document.getElementById("currUrl").innerHTML = track.url;
+        document.getElementById("currUrl").innerHTML = track.uri;
 
         // set the title of the track
         $('#trackname').text(track.title);
