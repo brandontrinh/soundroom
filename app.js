@@ -98,9 +98,14 @@ $(function(){
         $("#recent").animate({ scrollBottom: 1000 }, 2000);
 
         var artist = 'G-Eazy';
-        var location;
-        var date;
-        $("#concert1").html(artist + " - " + "loction" + " " + "date");
+        var my_json;
+        $.getJSON("http://api.jambase.com/events?artistId=91145&page=0&api_key=r4peddjenqt3eyx23j37vusn", function(json) {
+        my_json = json;
+        });
+        var parsedData = my_json.parse(data);
+        var location = parsedData.City + ", " + parsedData.State;
+        var date = parsedData.Date;
+        $("#concert1").html("<strong>"+artist + " - " + location + " " + date +"</strong>");
 
         $("#addbutton").click(function(){
 
