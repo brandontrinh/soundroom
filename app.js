@@ -54,20 +54,19 @@ $(function(){
         $(document).ready(function(){
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var PlayList = Parse.Object.extend("PlayList");
-        var chillList = new PlayList();
 
-
-        chillList.save(null, {
-          success: function(chillList) {
-            // Execute any logic that should take place after the object is saved.
-            //alert('New object created with objectId: ' + chillList.id);
-          },
-          error: function(chillList, error) {
-            // Execute any logic that should take place if the save fails.
-            // error is a Parse.Error with an error code and message.
-            //alert('Failed to create new object, with error code: ' + error.message);
-          }
-        });
+        // Parse.Object save example
+        // chillList.save(null, {
+        //   success: function(chillList) {
+        //     // Execute any logic that should take place after the object is saved.
+        //     //alert('New object created with objectId: ' + chillList.id);
+        //   },
+        //   error: function(chillList, error) {
+        //     // Execute any logic that should take place if the save fails.
+        //     // error is a Parse.Error with an error code and message.
+        //     //alert('Failed to create new object, with error code: ' + error.message);
+        //   }
+        // });
 
         $("#start").click(function(){
             $("#top").hide(500);
@@ -77,6 +76,7 @@ $(function(){
         $("#addbutton").click(function(){
             // var trackName = document.getElementById("searchterm").value;
             //document.getElementById("demo").innerHTML = trackName;
+            var chillList = new PlayList();
             var song = all_tracks[$('#songList').val()];
             chillList.set("name", song.title);
             chillList.set("url", song.uri);
