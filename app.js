@@ -117,7 +117,6 @@ $(function(){
 
     // takes a track from SoundCloud and plays it.
     function playTrack(track) {
-        alert("yay it workedddd!!!");
         cleanUpSpace();
         // console.log(track.uri);
         // update the iframe source
