@@ -55,8 +55,8 @@ $(function(){
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var Track = Parse.Object.extend("Track");
 
-        var testSong = "<iframe id=&quot;topPlayer1&quot; width=&quot;100%&quot; height=&quot;95px&quot; src=&quot;https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false&quot;></iframe>";
-        $("#topEmbedded").append("test song");
+        var testSong = "<iframe id=&quot;rPlayer1&quot; width=&quot;100%&quot; height=&quot;95px&quot; src=&quot;https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false&quot;></iframe>";
+        $("#topEmbedded").append(testSong);
 
         $("#start").click(function(){
             $("#top").hide(500);
