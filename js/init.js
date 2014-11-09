@@ -44,10 +44,19 @@
 
 	$(document).ready(function(){
 		Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
-		var TestObject = Parse.Object.extend("TestObject");
-		var testObject = new TestObject();
-		testObject.save({foo: "bar"}).then(function(object) {
-		  alert("yay! it worked");
+		var PlayList = Parse.Object.extend("PlayList");
+		var chillList = new PlayList();
+		 
+		chillList.save(null, {
+		  success: function(chillList) {
+		    // Execute any logic that should take place after the object is saved.
+		    alert('New object created with objectId: ' + gameScore.id);
+		  },
+		  error: function(chillList, error) {
+		    // Execute any logic that should take place if the save fails.
+		    // error is a Parse.Error with an error code and message.
+		    alert('Failed to create new object, with error code: ' + error.message);
+		  }
 		});
 		$("#start").click(function(){
 			$("#top").hide(500);
@@ -56,8 +65,38 @@
 		$("#addbutton").click(function(){
 			var trackName = document.getElementById("searchterm").value;
     		document.getElementById("demo").innerHTML = trackName;
+    		chillList.set("url", "https://soundcloud.com/porter-robinson/divinity-feat-amy-millan");
+			chillList.set("rating", 0);
+			chillList.set("timeAdded", getDateTime());
 		});
 	});
+
+	function getDateTime() {
+	    var now     = new Date(); 
+	    var year    = now.getFullYear();
+	    var month   = now.getMonth()+1; 
+	    var day     = now.getDate();
+	    var hour    = now.getHours();
+	    var minute  = now.getMinutes();
+	    var second  = now.getSeconds(); 
+	    if(month.toString().length == 1) {
+	        var month = '0'+month;
+	    }
+	    if(day.toString().length == 1) {
+	        var day = '0'+day;
+	    }   
+	    if(hour.toString().length == 1) {
+	        var hour = '0'+hour;
+	    }
+	    if(minute.toString().length == 1) {
+	        var minute = '0'+minute;
+	    }
+	    if(second.toString().length == 1) {
+	        var second = '0'+second;
+	    }   
+	    var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;   
+	     return dateTime;
+	}
 
 	$(function() {
 
