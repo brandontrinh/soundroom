@@ -246,17 +246,12 @@ $(function(){
     });
 
 
-
-    // main function that handles searching
     $('#searchterm').keyup(function(event) {
 
         event.preventDefault();
-
-        // google analytics
       
         var q = $("#searchterm").val();
 
-        // validate query
         if (q == '' || q == undefined) {
             return;
         }
@@ -272,18 +267,18 @@ $(function(){
         timer = setTimeout(function() {
                 if(event.which == 13)
             {
-                instaSearch(q);
+                search(q);
             }
         }, 200); // wait for 200ms after search query
 
     });
 
     // searches and plays a track
-    function instaSearch(q) {
+    function search(q) {
         $('#songList').show();
         SC.get('/tracks', { q: q, limit: 10 }, function(tracks) {
             if (tracks.length == 0) {
-                cleanUpSpace();
+                clean();
                 $('#error').append('No tracks found');
             } else {
                 all_tracks = tracks;
@@ -305,10 +300,9 @@ $(function(){
     });
     
 
-    // takes a track from SoundCloud and plays it.
     function playTrack(track) {
 
-        cleanUpSpace();
+        cleanUp();
         widget.load(track.uri, {
             auto_play: true,
             buying: false,
@@ -319,25 +313,19 @@ $(function(){
         currUri = track.uri;
         document.getElementById("currTrack").innerHTML = track.title;
         document.getElementById("currUri").innerHTML = currUri;
-        // set the title of the track
         $('#trackname').text(track.title);
-
-        // console.log("loaded " + track.title);
     }
 
-    // toggle play and paused state of audio player
     var toggle = function() {
         widget.toggle();
     }
 
-    // play the next song in queue and remove the track that
-    // is to be played.
     var next = function() {
         if (all_tracks.length != 0) {
             var track = all_tracks.splice(0, 1)[0];
             playTrack(track);
         } else {
-            cleanUpSpace();
+            clean();
             $('#error').append('No more songs. Try searching.');
             $('#searchterm').focus();
         }
@@ -345,19 +333,18 @@ $(function(){
 
     var volumeUp = function() {
         widget.getVolume(function(volume) {
-            widget.setVolume(Math.min(100, volume + 5));
+            widget.setVolume(Math.min(100, volume + 3));
         });
     }
 
     var volumeDown = function() {
         widget.getVolume(function(volume) {
-            widget.setVolume(Math.max(0, volume - 5));
+            widget.setVolume(Math.max(0, volume - 3));
         });
     }
 
-    var cleanUpSpace = function() {
+    var cleanUp = function() {
         $('#widget').empty();
         $('#error').empty();
     }
-
 });
