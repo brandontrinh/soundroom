@@ -1,0 +1,8 @@
+To Do List
+	Write down things to do to improve soundroom and mark the tasks you want to do 
+
+1. Fix upvote downvote
+2. Clean up code
+3. jQuery Accordion
+4. New name/logo?
+5. 
