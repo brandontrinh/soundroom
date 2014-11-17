@@ -3,6 +3,7 @@ To Do List
 
 1. Fix upvote downvote
 2. Clean up code
-3. jQuery Accordion
+3. jQuery Accordion - Brandon
 4. New name/logo?
-5. 
+5. Add concert information
+6. Multiple playlists
