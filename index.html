@@ -17,7 +17,7 @@
       <script src="http://connect.soundcloud.com/sdk.js"></script>
      	<script src="http://w.soundcloud.com/player/api.js"></script>
      	<script src="//www.parsecdn.com/js/parse-1.3.1.min.js"></script>
-		
+
    <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -44,7 +44,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<link rel="icon" type="image/png"href="images/browser.png" />
-	</head> 
+	</head>
 	<body>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -91,15 +91,15 @@
 					  data-show-faces="true">
 					</div> -->
 						</nav>
-						
+
 				</div>
-				
+
 				<div class="bottom">
 					<!-- Social Icons -->
 						<ul class="icons">
 							<li><a href="https://github.com/brandontrinh/HackSC2014" class="icon fa-github"><span class="label">Github</span></a></li>
 						</ul>
-				
+
 				</div>
 
 			</div>
@@ -114,7 +114,7 @@
 								<h2 class="alt">Hi! I'm <strong>Cloudlist</strong>, a webapp that crowd generates dope playlists.</h2>
 								<p>Like yee.</p>
 							</header>
-							
+
 							<footer>
 								<p id="start" class="button scrolly">Add Songs!</p>
 							</footer>
@@ -128,7 +128,7 @@
 							<header>
 								<h2 class="alt">Search</h2>
 								<!-- <div id="songList"> </div> -->
-								
+
 								      <div id="search">
 								      <!-- VERY GHETTO PLEASE FIX LATER BUT FOR NOW NO SHAME -->
 								      <p style= "display:none" id= "currTrack"> demo </p>
@@ -137,21 +137,21 @@
         <input id="searchterm" type="text" required autofocus cols="50" placeholder="Search on SoundCloud" />
         <button id= "addbutton" class="button">Add</button>
       </div>
-      <select style="display: none" id="songList"></select> 
-            <div id="app">  
+      <select style="display: none" id="songList"></select>
+            <div id="app">
             <div id="error"></div>
 
           <div id="error"></div>
           <iframe id="widget" width="100%"></iframe>
       </div>
 							</header>
-							
+
 							<footer>
 							</footer>
 
 						</div>
 					</section>
-					
+
 				<!-- Top 10 -->
 					<section id="top10" class="three">
 						<div class="container">
@@ -159,11 +159,18 @@
 							<header>
 								<h2>Top Songs</h2>
 							</header>
-							
+
+							<!-- TODO: wrap each of these in a div tag with class "topSongEntry" -->
+
+							<div id="rating1" align="left">Rating: <span>##</span></div>
                      <iframe id="top1" width="100%"></iframe>
+							<div id="rating2" align="left">Rating: <span>##</span></div>
                      <iframe id="top2" width="100%"></iframe>
+							<div id="rating3" align="left">Rating: <span>##</span></div>
                      <iframe id="top3" width="100%"></iframe>
+							<div id="rating4" align="left">Rating: <span>##</span></div>
                      <iframe id="top4" width="100%"></iframe>
+							<div id="rating5" align="left">Rating: <span>##</span></div>
                      <iframe id="top5" width="100%"></iframe>
 			<!--     <iframe id="top6" width="100%"></iframe>
                      <iframe id="top7" width="100%"></iframe>
@@ -181,28 +188,34 @@
 							<header>
 								<h2>Recently Added</h2>
 							</header>
-							
+
 							<div id="recentList"> </div>
 
+							<!--TODO: wrap each of these groups into divs with a class of "recentEntry" -->
 
 							<button id= "upvote11" class="upvote"><img src="images/thumbsup.png"></button>
                      <button id= "downvote11" class="downvote"><img src="images/thumbsdown.png"></button>
+							<div id="rating11" align="left">Rating: <span>##</span></div>
                      <iframe id="rPlayer11" width="100%" height="95px" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/giraffage/close-2-me?show_artwork=false"></iframe>
 
                		<button id= "upvote12" class="upvote"><img src="images/thumbsup.png"></button>
                      <button id= "downvote12" class="downvote"><img src="images/thumbsdown.png"></button>
+							<div id="rating12" align="left">Rating: <span>##</span></div>
                      <iframe id="rPlayer12" width="100%" height="95px" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/wyntr_records/the-dream-falsetto-giraffage?show_artwork=false"></iframe>
 
                     <button id= "upvote13" class="upvote"><img src="images/thumbsup.png"></button>
                     <button id= "downvote13" class="downvote"><img src="images/thumbsdown.png"></button>
+						  <div id="rating13" align="left">Rating: <span>##</span></div>
                     <iframe id="rPlayer13" width="100%" height="95px" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/shift-key/touch-shift-k3y-remix?show_artwork=false"></iframe>
 
                     <button id= "upvote14" class="upvote"><img src="images/thumbsup.png"></button>
                     <button id= "downvote14" class="downvote"><img src="images/thumbsdown.png"></button>
+						  <div id="rating14" align="left">Rating: <span>##</span></div>
                     <iframe id="rPlayer14" width="100%" height="95px" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/beazytymes/the-xx-hot-like-fire?show_artwork=false"></iframe>
 
                     <button id= "upvote15" class="upvote"><img src="images/thumbsup.png"></button>
                     <button id= "downvote15" class="downvote"><img src="images/thumbsdown.png"></button>
+						  <div id="rating15" align="left">Rating: <span>##</span></div>
                     <iframe id="rPlayer15" width="100%" height="95px" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/cashmerecat/cashylovesryn?show_artwork=false"></iframe>
 
 						</div>
