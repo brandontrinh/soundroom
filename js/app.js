@@ -51,6 +51,19 @@ $(function(){
         }
     });
 
+    /**
+    * Returns the url field of the Parse Track Object corresponding to
+    * a upvote/downvote button (yes, using the horrid hacky numbering system...
+    * hackathon code is beautiful, isn't it?)
+    */
+    function getTrackUrlFromButtonId(buttonId) {
+       var numSuffix = buttonId.substring(buttonId.length - 2, buttonId.length);
+       var playerSrc = $("#rPlayer" + numSuffix).prop("src");
+       var trackUrl = playerSrc.substring(playerSrc.indexOf("https://api.soundcloud.com"),
+                                     playerSrc.indexOf("?show_artwork=false"));
+       return trackUrl;
+    };
+
     $(document).ready(function() {
         Parse.initialize("ovwXFPTmzVJfebpzH1iJLLdJsKtMEqn9jD3cmBZW", "q7n9xQOnhCtcGzKUgGfW196IyuFqYGJnLMCZeWGZ");
         var Track = Parse.Object.extend("Track");
@@ -63,36 +76,46 @@ $(function(){
 
         $(".upvote").click(function() {
             var query = new Parse.Query(Track);
-            query.equalTo("url", $(this).attr("url")); // match upvote button with its corresponding player
+            // HORRENDOUS way to retrieve & update the proper Parse Track object
+            // I said I'd at least fix the rating system one day; so I did!
+            var buttonId = this.id;
+            var trackUrl = getTrackUrlFromButtonId(buttonId);
+            var numSuffix = buttonId.substring(buttonId.length - 2, buttonId.length);
+            query.equalTo("url", trackUrl);
             query.first({
-                success: function(track) {
-                    // Increment and update/save the track's rating
-                    track.increment("rating");
-                    track.save();
-                    console.log(track);
-                    console.log(track[0]);
-                    console.log("'" + track.title + "' now has a rating of " + track.get("rating"));
-                },
-                error: function(error) {
-                    alert("Error: " + error.code + " " + error.message);
-                }
-            }); // end query.first()
+               success: function(track) {
+                  track.increment("rating");
+                  track.save();
+                  $("#rating" + numSuffix + " span").html(track.get('rating'));
+                  getTopTenSongsList();
+                  console.log("\'" + track.get("name") + "\' rating increased to " + track.get('rating'));
+               },
+               error: function(error) {
+                  console.log(error);
+               }
+            });
         });
 
-        $(".downvote").click(function() { 
+        $(".downvote").click(function() {
             var query = new Parse.Query(Track);
-            query.equalTo("url", $(this).attr("url")); // match downvote button with its corresponding player
+            // HORRENDOUS way to retrieve & update the proper Parse Track object
+            // I said I'd at least fix the rating system one day; so I did!
+            var buttonId = this.id;
+            var trackUrl = getTrackUrlFromButtonId(buttonId);
+            var numSuffix = buttonId.substring(buttonId.length - 2, buttonId.length);
+            query.equalTo("url", trackUrl);
             query.first({
-                success: function(track) {
-                    // Decrement and update/save the track's rating
-                    track.decrement("rating");
-                    track.save();
-                    console.log("'" + track.title + "' now has a rating of " + track.get("rating"));
-                },
-                error: function(error) {
-                    alert("Error: " + error.code + " " + error.message);
-                }
-            }); // end query.first()
+               success: function(track) {
+                  track.increment("rating", -1);
+                  track.save();
+                  $("#rating" + numSuffix + " span").html(track.get('rating'));
+                  getTopTenSongsList();
+                  console.log("\'" + track.get("name") + "\' rating decreased to " + track.get('rating'));
+               },
+               error: function(error) {
+                  console.log(error);
+               }
+            });
         });
 
         $('#recent').scroll();
@@ -125,7 +148,7 @@ $(function(){
             // Check if this song is already in the Parse DB, based on its name
               if (!track.get("name")) {
                alert('A Track must have a name.');
-              } 
+              }
               else {
                 var query = new Parse.Query(Track);
                 query.equalTo("name", track.get("name"));
@@ -133,12 +156,15 @@ $(function(){
                   success: function(object) {
                     if (object) {
                       alert("A Track with this name already exists.");
-                    } 
+                    }
                     else {
                         // Seems to be a unique song, so it's okay to add
                         track.save(null, {
                           success: function(track) {
                             // Execute any logic that should take place after the object is saved.
+                            // Update lists
+                            getTopTenSongsList();
+                            getRecentSongsList();
                             alert("'" + track.title + "' was added to the Recently Added list.");
                           },
                           error: function(track, error) {
@@ -178,6 +204,11 @@ $(function(){
                     var frame = $("#top" + (i + 1))[0];
                     frame.src = "https://w.soundcloud.com/player/?url=" + results[i].get("url") + "?show_artwork=false";
                     SC.Widget(frame);
+                    // Also display each top song's rating
+                    $("#rating" + (i + 1) + " span").html(results[i].get('rating'));
+                    if(i<2) {
+                        // use jam base api here
+                    }
                 }
            }
         });
@@ -193,37 +224,31 @@ $(function(){
            success: function(results) {
                 // On successful find, populate Recently Added song list with players
                 for(i = 0; i < results.length; i++) {
-                    var suffix = i + 11; // numerical suffix for the player
-                    var uri = results[i].get("url"); // uri, used for identifying and streaming the song
-                    var frame = $("#rPlayer" + suffix)[0]; // get the iframe for the track's player
-                    frame.setAttribute("data-url", uri); // the uri is used to identify the track and its vote buttons
-                    frame.src = "https://w.soundcloud.com/player/?url=" + uri + "?show_artwork=false";
-                    SC.Widget(frame); // create the soundcloud player widget
-
-                    // Associate this track with its upvote/downvote buttons by its uri
-                    var upvote = $("#upvote" + suffix)[0];
-                    upvote.setAttribute("data-url", uri);
-                    var downvote = $("#downvote" + suffix)[0];
-                    downvote.setAttribute("data-url", uri);
-                }              
+                    var frame = $("#rPlayer" + (i + 11))[0];
+                    frame.src = "https://w.soundcloud.com/player/?url=" + results[i].get("url") + "?show_artwork=false";
+                    SC.Widget(frame);
+                    // Also display rating
+                    var ratingDisplayVal = $("#rating" + (i + 11) + " span");
+                    ratingDisplayVal.html(results[i].get("rating"));
+                }
            }
         });
     }
 
     function getDateTime() {
-        var now     = new Date(); 
+        var now     = new Date();
         var year    = now.getFullYear();
-        var month   = now.getMonth()+1; 
+        var month   = now.getMonth()+1;
         var day     = now.getDate();
         var hour    = now.getHours();
         var minute  = now.getMinutes();
-        var second  = now.getSeconds(); 
+        var second  = now.getSeconds();
         if(month.toString().length == 1) {
             var month = '0'+month;
         }
         if(day.toString().length == 1) {
             var day = '0'+day;
-        }   
+        }
         if(hour.toString().length == 1) {
             var hour = '0'+hour;
         }
@@ -232,8 +257,8 @@ $(function(){
         }
         if(second.toString().length == 1) {
             var second = '0'+second;
-        }   
-        var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;   
+        }
+        var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;
          return dateTime;
     }
 
@@ -249,7 +274,6 @@ $(function(){
     $('#searchterm').keyup(function(event) {
 
         event.preventDefault();
-      
         var q = $("#searchterm").val();
 
         if (q == '' || q == undefined) {
@@ -298,7 +322,7 @@ $(function(){
         var song = all_tracks[$(this).val()];
         playTrack(song);
     });
-    
+
 
     function playTrack(track) {
 
